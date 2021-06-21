@@ -1,8 +1,8 @@
 module.exports = ctx => ({
-  "title": "AI Blog",
-  "description": "Text Generation and Machine Translation Blogs",
+  "title": "Blog",
+  "description": "Blogs on Text Generation, Machine Translation, and other AI related topics",
   "dest": "output",
-  "base": ctx.isProd ? '' : '',
+  "base": '/blog/',
   "head": [
     [
       "link",
