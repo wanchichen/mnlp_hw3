@@ -11,7 +11,8 @@ bgImage: '/bg.png'
 #   margin: '9rem auto 2rem',
 #   background: '#fff',
 #   borderRadius: '1rem',
-# }
+# }  
+# blog 
 bgImageStyle: {
 height: '450px'
 }
