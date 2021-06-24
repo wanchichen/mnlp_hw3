@@ -1,6 +1,6 @@
 module.exports = ctx => ({
   "title": "Blog",
-  "description": "Blogs on Text Generation, Machine Translation, and other AI related topics",
+  "description": "Blogs on NLP, Machine Learning, Data Mining, and other AI related topics",
   "dest": "output",
   "base": '/blog/',
   "head": [
@@ -75,10 +75,10 @@ module.exports = ctx => ({
     "search": true,
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
-    "author": "Lilei",
+    "author": "Lei Li",
     "authorAvatar": "/avatar.png",
-    "record": "ByteDance",
-    "startYear": "2017",
+    "record": "",
+    "startYear": "2016",
     "mode": "light",
     "modePicker": false
   },
