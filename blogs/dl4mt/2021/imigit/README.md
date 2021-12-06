@@ -1,5 +1,5 @@
 ---
-title: Can visual imagination help machine translation?
+title: Can Visual Imagination Help Machine Translation?
 author: Yujie Lu
 date: 2021-11-21
 tags:

@@ -1,9 +1,10 @@
 ---
-title: Learning Shared Semantic Space for Speech Translation
+title: Learning Shared Semantic Space for Speech-to-Text Translation
 author: Xianjun Yang
 date: 2021-11-13
 tags:
  - Speech Translation
+ - Shared Semantic Memory
 categories:
  - ST
  - DL4MT

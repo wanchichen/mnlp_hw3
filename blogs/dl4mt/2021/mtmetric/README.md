@@ -6,6 +6,7 @@ tags:
  - MT Evaluation
  - BERTScore
  - COMET
+ - BERT
 categories:
  - MT
  - DL4MT

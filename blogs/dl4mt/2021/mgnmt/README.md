@@ -3,7 +3,8 @@ title: Mirror-Generative Neural Machine Translation
 author: Tsu-Jui Fu
 date: 2021-11-25
 tags:
- - Machine Translation
+ - Variational Inference
+ - Latent Variable Model
 categories:
  - MT
  - DL4MT

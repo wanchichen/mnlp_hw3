@@ -1,9 +1,10 @@
 ---
-title: Exploiting capacity for multilingual neural machine translation 
+title: Exploiting Capacity for Multilingual Neural Machine Translation 
 author: Wenda Xu
 date: 2021-11-19
 tags:
  - Multilingual MT
+ - Language-specific sub-network
 categories:
  - MT
  - DL4MT

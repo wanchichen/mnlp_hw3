@@ -4,6 +4,8 @@ author: Weixi Feng
 date: 2021-11-20
 tags:
  - Multilingual MT
+ - Contrastive Learning
+ - Zero-shot Translation
 categories:
  - MT
  - DL4MT

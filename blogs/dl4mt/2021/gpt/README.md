@@ -3,12 +3,12 @@ title: Generative Pre-trained Transformer (GPT)
 author:  Alex Rasla
 date: 2021-11-01
 tags:
- - Pre-training
+ - Pre-trained Language Model
  - GPT
- - LM
- - MT
+ - Machine Translation
+ - Text Generation
 categories:
- - MT
+ - NLP
  - DL4MT
 ---
 
