@@ -1,14 +1,10 @@
 ---
 Title: Learning Shared Semantic Space for Speech-to-Text Translation
-
-author:  Xianjun Yang
-
+author: Xianjun Yang
 date: 2021-11-13
-
 tags:
  - ST
  - MT
-
 categories:
  - ST
  - DL4MT
