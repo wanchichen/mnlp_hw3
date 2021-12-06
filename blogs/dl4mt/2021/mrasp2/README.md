@@ -84,5 +84,10 @@ The authors build a dataset called Ted-M from the Ted test set with 15-language 
 # Summary
 Now we can come to a conclusion of the paper. This paper proposes a unified multilingual translation system called mRASP2 with simple but effective components, including contrastive learning, aligned augmentation, and monolingual datasets. Through comprehensive experimental results, they demonstrate that contrastive learning significantly improves the zero-shot translation quality. Aligned Augmentation is a stable and effective techinque for all translation setups. Monolingual data also improves the performance on unsupervised translation by a large margin. Combining all three techinques, mRASP2 achieves substantial improvements over all translation directions of multilingual NMT. They also showcase the learned language-agnostic representation by visualizing the alignment of different languages in a 2-dimensional space. mRASP2 shows the possibility of a true many-to-many Multilingual NMT that supports translation in all directions. 
 
+
+# Code
+<https://github.com/PANXiao1994/mRASP2>
+
+
 # Reference
 - Xiao Pan, Mingxuan Wang, Liwei Wu, Lei Li. Contrastive Learning for Many-to-many Multilingual Neural Machine Translation. ACL 2021.
