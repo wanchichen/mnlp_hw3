@@ -49,12 +49,12 @@ The experiments are conducted on IWSLT and WMT benchmarks. For IWSLT, we collect
 
 LaSS consistently outperforms the multilingual baseline on all language pairs, confirming that using LaSS to alleviate parameter interference can help boost performance. Similarly, LaSS obtains consistent gains over multilingual baseline on WMT for both Transformer-base and Transformer-big. For Transformer-base, LaSS achieves an average improvement of 1.2 BLEU on 36 language pairs. For Transformer-large, LaSS obtains 0.6 BLEU improvement. Authors have three key observations: 1) As dataset scale increases, the improvement of BLEU and WR becomes larger, suggesting that the language pairs with large scale benefits more from LaSS. 2)  Transformer-base gains more from the Transformer-big. This verfies the idea that more severe parameter interference for smaller models. 3) Authors also tested on random initialized masks, which is underperformed compared to the baselines. LaSS performance in IWLST and WMT compared to baseline and random initialized masks are included in Table 1 and Table 2, respectively.
 
-![eqn](./iwslt.png)
-![eqn](./wmt.png)
+![iwslt](./iwslt.png)
+![wmt](./wmt.png)
 
 In this work, authors also demonstrate that LaSS can easily adapt to new unseen languages without dramatic drops for other existing languages. They distribute a new sub-network to each new language pair and train the sub-network with the specific language pair for fixed steps. In this way, the new language pair will only update the corresponding parameters and it can alleviate the interference and catastrophic forgetting to other language pairs. As demonstrated in the figure 2, LaSS hardly drops on other language pairs, while the multilingual baseline model dramatically drops by a large margin. LaSS also demonstrates its strong performance in zero-shot machine translation. Since LaSS strengthens its language specific parameters, apart from the language indicator, to the model to translate into the target language. 
 
-![eqn](./extenson.png)
+![extenson](./extenson.png)
 
 In the end, authors further analysized on the mask similarity and language family. They observed that for both En->X and X->En, the mask similarity is positively correlated to the language family similarity. Moreover, authors observed that on both the encoder and decoder side, the model tends to distribute more language specific components on the top and bottom layers rather than the middle ones. For fully-connected layer, the model tends to distribute more language specific capacity on the middle layers for the encoder,
 while distribute more language specific capacity in the decoder for the top layers. They also invertigate on how mask can improve zero-shot performance. They observed that replacing the encoder mask with other languages causes only littler performance drop, while replacing the decoder mask causes dramatic performance drop. Therefore, decoder mask is essential of performance improvement. Lastly, they found out for larger dataset, like WMT, a smaller pruning rate is better to keep the model capacity.
