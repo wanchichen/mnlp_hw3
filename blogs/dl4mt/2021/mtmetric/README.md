@@ -14,23 +14,19 @@ categories:
 
 How to automatically evaluate the quality of a machine translation system? Human evaluation is accurate, but expensive. It is not suitable for MT model development. 
 
-<!-- more -->
 
 Reading Time: About 15 minutes.
 
+<!-- more -->
 
 ## A brief history of MT evaluation metrics
 ### Human evaluation
 In 1966, United States, the Automatic Language Processing Advisory Committee (ALPAC) conducted a large scale study on the evaluation of the state-of-the-art Russian-to-English Machine Translation (MT) systems at that time [1]. Indeed, the ALPAC report was infamous for holding a negative opinion toward the development of MT, and caused the suspension of research into related fields for two decodes. However, one of the first practical method for the evaluation of translation quality was developed from the study. Basically, six trained translators were each assigned to evaluate 144 sentences from 4 passages. The evaluation was based on "intelligibility" and "fidelity". "Intelligibility" measures to what extent the sentence can be understood, and "fidelity" measures how much information the translated sentence retained compared to the source. Human evaluation was based on these two variables by giving a score on the scale of 1-9. This is one of the earlest systematic MT evaluation metrics based on human judgement.
-<p align="center">
-  <img width="400" src="img/ALPAC.png">
-</p>
+![image1](img/ALPAC.png)
 
 ### Automatic evaluation
 Even though employing human judgement as measuring metric is the most effective approach, purely depending on human is expensive as well as slow in face of the growing size of data, which promoted the need for automation. In 2002, the most commonly used evaluation metric, Bilingual Evaluation Understudy (BLEU), was developed by Kishore et al. [2]. BLEU measures the difference between references  and machine translation candidates through n-grams and brevity penalty. Based on the preliminary that the “highest correlation with monolingual human judgements” is four, n-grams measure the exact word segment correspondence of length one to four in the sentence pair. The brevity penalty is included to avoid short candidates receiving unreasonably high BLEU scores. BLEU remains popular till today due to its light-weightedness and fastness. A simple example [3] of word-level BLEU is demonstrated below.
-<p align="center">
-  <img width="600" src="img/bleu_exm.png">
-</p>
+![image2](img/bleu_exm.png)
 
 
 ## BERTScore
@@ -43,44 +39,32 @@ Secondly, n-gram metrics cannot capture semantic dependencies of distant words o
 
 ### Technique
 The workflow of BERTScore computation is illustrated in the diagram below. Having a reference sentence x tokenized to (x1, …, xk) and a candidate sentence x̂ tokenized to  (x̂1, ..., x̂k), the technique transforms the tokens into contextual imbeddings, and compute the match among all takens by cosine similarity. As an option, multiplying an additional weight based on the inverse document frequency of matching words can be helpful in some scenarios. The outcome includes a precision (R_BERT), recall (P_BERT), and combined metric scores(F1).
-<p align="center">
-  <img src="img/bert_tech.png">
-</p>
+![image3](img/bert_tech.png)
 
 
 BERTScore uses the BERT model to generate contextual embeddings for each token. BERT tokenizes the input text into a sequence of word pieces, and splits the unknown words into commonly observed sequences of characters. The Transformer encoder computes the representation for each word piece by repeatedly applying self-attention and nonlinear transformation alternatively. The resulting contextual embedding from word piece will generate different vector representation for the same word piece in different contexts with regard to surrounding words, which is significantly different from the exact string match metric in BLEU. 
 
 Due to the vector representation of word embedding, BERTScore is able to perform a soft measure of similarity compared to exact-string matching in BLEU. The cosine similarity of a reference token xi and a candidate token x̂j is :
-<p align="center">
-  <img width="100" src="img/bert_e1.png">
-</p>
+![image4](img/bert_e1.png)
 
 With similarity measurement of each pair of reference token and candidate token in preparation, we can move on to compute precision and recall. In the greedy match perspective, we match each token in x with the highest similarity score in x̂.Recall is computed by matching each token in x to a token in x̂, while precision is by matching each token in x to the corresponding token in x̂. F1 score is calculated by combining precision and recall with the formular listed below. Extensive experiments indicate that F1 score performs reliably well across different settings, and therefore is the most recommended score to be used for evaluation. 
-<p align="center">
-  <img src="img/bert_e2.png">
-</p>
+![image5](img/bert_e2.png)
 
 Optionally, we can add an importance weighting to different words to optimize the metric, because previous works indicated that “are words can be more indicative for sentence similarity than common words” [5]. From experiments, apply idf-based weight can render small benefits in some scenarios, but have limited contribution in other cases. The authors use the inverse document frequency (idf) scores to assign higher weights to rare words. Because there is limited preformance improvement when applying importance weighting, details about this optional stage will not be discussed further.
 
 A simple example of BERTScore calculation without importance from the ref-cand cosine similarity matrix is illustrated below. Basically, R_BERT is calculated by the sum of maximum values in each row divided by the number of rows, and P_BERT is calculated by the sum of the maximum values in each column divided by the number of columns. F1 is computed by 2 times the product of R_BERT and P_BERT divided by their sum. The BERTScore with importance weighting can be computed by multiplying the corresponding weight to each cosine similarity.
-<p align="center">
-  <img src="img/bert_exm.png">
-</p>
+![image6](img/bert_exm.png)
 
 
 ### Effectiveness
 For the evaluation of BERTScore, this blog will focus on the machine translation task in the original paper. The experiment’s main evaluation corpus is the WMT18 metric evaluation dataset, containing predictions of 149 translation systems across 14 language pairs, gold references, and two types of human judgment scores. The evaluation is completed with regard to both segment-level and system-level. The Segment-level human judgment score is for each reference-candidate pair, while the system-level human judgments score is based on all pairs in the test set.
 
 Table below demonstrates the system-level correlation to human judgements. The higher the score is, the closer the system evaluation is to human evaluation. Focusing on FBERT score (F1 score), we can see a large number of bold correlations of metrics for FBERT, indicating it is the top performance system compared to the others. 
-<p align="center">
-  <img width="700" src="img/bert_t1.png">
-</p>
+![image7](img/bert_t1.png)
 
 
 Apart from system-level correlation, the table below illustrating the segment-level correlations, BERTScore shows a considerably higher performance compared to the others. The outperformance in segment-level correlations further exhibits the quality of BERTScore for sentence level evaluation.
-<p align="center">
-  <img width="700" src="img/bert_t4.png">
-</p>
+![image8](img/bert_t4.png)
 
 
 ## COMET
@@ -93,52 +77,37 @@ As the authors point out, “the MT research community still relies largely on o
 The first step of COMET score computation is to encode the source, MT hypothesis, and reference sentence into token embeddings. The authors take advantage of a pretrained, cross-lingual encoder model, XLM_RoBERTa, to generate the three sequences (src, hyp, ref) into token embeddings. For each input sequence x = [x0, x1, …, xn], the encoder will produce an embedding e_j(l) for each token xj and each layer l ∈ {0, 1, …, k}. 
 
 The word embeddings from the last layer of the encoders are fed into a pooling layer. Using a layer-wise attention mechanism, the information from the most important encoder layers are pooled into a single embedding for each token ej. μ is a trainable weight coefficient, E_j = [e_j(0), e_j(1), ..., e_j(k)] corresponds to the vector of layer embeddings for token xj, and α = softmax([α(1), α(2), . . . , α(k)]) is a vector corresponding to the layer-wise trainable weights.
-<p align="center">
-  <img width="200" src="img/comet_t1.png">
-</p>
+![image9](img/comet_t1.png)
+
 After applying an average pooling to the resulting word embeddings, a sentence embedding can be concatenated into a single vector from segments. The process is repeated three times for source, hypothesis, and reference sequences. Specifically, two models, the Estimator model and the Translation Ranking model, were developed for different usages.
 
 For the Estimator model, a single vector x is computed from the three sentence embeddings s, h, and r specified below: 
-<p align="center">
-  <img width="300" src="img/comet_t2.png">
-</p>
+![image10](img/comet_t2.png)
+
 Where h⊙s and h⊙r denotes the element-wise source product and reference product, and |h-s| and |h-r| denotes the absolute element-wise source difference and reference difference. The combined feature x serves as input to a feed-forward regression network. The network is trained to minimize the mean squared error loss between its predicted scores and human quality assessment scores (DA, HTER or MQM).
 
 The Translation Ranking model, on the other hand, has different inputs {s,h+,h-,r}, i.e. a source, a higher-ranked hypothesis h+, a lower-ranked hypothesis h-, and a reference. After transforming them into sentence embeddings **{s,h+,h-,r}**, the triplet margin loss in relation to the source and reference is calculated:
-<p align="center">
-  <img width="300" src="img/comet_t3.png">
-</p>
+![image11](img/comet_t3.png)
 
 d(u, v) denotes the euclidean distance between u and v and ε is a margin. In this way during training, the model will optimize the embedding space so the distance between the anchors (s and r) and the “worse”
 hypothesis h− is larger by at least ε than the distance between the anchors and “better” hypothesis. 
 
 In the inference stage, the model will receive a triplet input (s,ĥ,r) with only one hypothesis, and the quality score will be the harmonic mean between the distance to the source d(s,ĥ) and that to the reference d(r,ĥ), and normalized it to a 0 to 1 range:
-<p align="center">
-  <img width="250" src="img/comet_t4.png">
-</p>
-<p align="center">
-  <img width="250" src="img/comet_t5.png">
-</p>
+![image12](img/comet_t4.png)
+![image13](img/comet_t5.png)
+
 In short, the Translation Ranking model is trained to minimize the distance between a “better” hypothesis and both its corresponding reference and its original source. 
-<p align="center">
-  <img src="img/comet_t6.png">
-</p>
+![image14](img/comet_t6.png)
 
  
 
 ### Effectiveness
 To test the effectiveness of COMET, the authors trained 3 MT translations models that target different types of human judgment (DA, HTER, and MQM) from the corresponding datasets: the QT21 corpus, the WMT DARR corpus, and the MQM corpus. Two Estimator models and one Translation Ranking model are trained. One regressed on HTER (COMET-HTER) is trained with the QT21 corpus, and another model regressed on MQM (COMET-MQM) is trained with the MQM corpus. COMET-RANK is trained with the WMT DARR corpus. The evaluation method employed is the official Kendall’s Tau-like formulation. Concordant is the number of times the metric gives a higher score to the defined "better" hypothesis, while Discordant is the number of times the metrics give a higher score to the "worse" hypothesis or the scores is the same for the two hypothesis.
-<p align="center">
-  <img width="250" src="img/comet_e1.png">
-</p>
+![image15](img/comet_e1.png)
 
 As shown in table the first table below, for as much as seven in eight language pair evaluation with English as source, COMET-RANK outperforms all other evaluation systems, including BLEU, two encoder models of BERTScore, and its two Estimator models, to a large extent. Similarly, for the language pair evaluation with English as target in the second table below, COMET also exceeds the other metrics in the overall performance, including the 2019 task winning metric YISI-1. 
-<p align="center">
-  <img width="700" src="img/comet_e2.png">
-</p>
-<p align="center">
-  <img width="700" src="img/comet_e3.png">
-</p>
+![image16](img/comet_e2.png)
+![image17](img/comet_e3.png)
 
 ## Case Study
 In order to measure how well BLEU, BERTScore, and COMET can evaluate on existing MT systems, I managed to find a dataset with human judgment scores (e.g DA) [7]. Unfortunately, the MT systems that have the DA score is not available to the public, e.g. I cannot access the Baidu-system.6940 with the highest DA score in WMT19. With this preliminary, the experiment to compare how our evaluation metrics scores with a human judgement score (e.g. DA) is unattainable. Another simpler case study for the metrics is initialized instead.

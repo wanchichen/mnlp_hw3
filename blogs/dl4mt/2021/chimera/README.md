@@ -3,14 +3,29 @@ Title: Learning Shared Semantic Space for Speech Translation
 author: Xianjun Yang
 date: 2021-11-13
 tags:
- - ST
- - MT
+ - Speech Translation
 categories:
  - ST
  - DL4MT
 ---
 
-​	Although it seems difficult for normal people to acquire more than two languages, according 
+
+How to develop a translation model that can take both speech and text as input and translate to target language?
+Can we borrow inspiration from human brain study to improve the speech translation models?
+
+Reading Time: About 15 minutes.
+
+<!-- more -->
+
+Paper：<https://arxiv.org/pdf/2105.03095.pdf>
+
+Github: <https://github.com/Glaciohound/Chimera-ST>
+
+
+## Introduction
+![image1](./c1.png)
+
+Although it seems difficult for normal people to acquire more than two languages, according 
 to the Wikipedia there are many polyglots who can speak tens of languages. For example, 
 Ziad Fazah, speaking a total of 59 world languages, is believed to be the world’s greatest living polyglot.
 However, compared with others in the history his record does not stand out. It was recorded that 
@@ -24,19 +39,6 @@ speech translation has always been a challenge for machine.
 One common advantage is that those polyglots all benefit from not only text, but also audio corpus. However,
 how to utilize both audio and text information to help machine speech translation has not been fully exploited.
 The challenge comes from the intrinsic difference of modality between audio and text.
-
-Reading Time: About 15 minutes.
-
-<!-- more -->
-
-Paper：<https://arxiv.org/pdf/2105.03095.pdf>
-
-Github: <https://github.com/Glaciohound/Chimera-ST>
-
-
-
-## Introduction
-![image1](./c1.png)
 
 A recent work Chimera from ByteDance AI Lab and UIUC aims to draw strengths from both modalities 
 for speech translation [1]. Their key idea is to represent text and audio inputs differently, 
@@ -264,10 +266,10 @@ language barriers among countries and nations are broken, is waiting fo us.
 ## References
 [1] Han, Chi, Mingxuan Wang, Heng Ji, and Lei Li. "Learning Shared Semantic Space for Speech-to-Text Translation." ACL 2021.
 
-[2]Van Atteveldt, Nienke, Elia Formisano, Rainer Goebel, and Leo Blomert. "Integration of letters and speech sounds in the human brain." Neuron 43, no. 2 (2004): 271-282.
+[2] Van Atteveldt, Nienke, Elia Formisano, Rainer Goebel, and Leo Blomert. "Integration of letters and speech sounds in the human brain." Neuron 43, no. 2 (2004): 271-282.
 
 [3] <https://en.wikipedia.org/wiki/Ioannis_Ikonomou>
 
-[4]Alexei Baevski, Yuhao Zhou, Abdelrahman Mohamed, and Michael Auli. 2020. wav2vec 2.0: A framework for self-supervised learning of speech representations. In Advances in Neural Information Processing Systems, volume 33, pages 12449–12460. Curran Associates, Inc.
+[4] Alexei Baevski, Yuhao Zhou, Abdelrahman Mohamed, and Michael Auli. 2020. wav2vec 2.0: A framework for self-supervised learning of speech representations. In Advances in Neural Information Processing Systems, volume 33, pages 12449–12460. Curran Associates, Inc.
 
-[5]Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. "Attention is all you need." In Advances in neural information processing systems, pp. 5998-6008. 2017.
+[5] Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. "Attention is all you need." In Advances in neural information processing systems, pp. 5998-6008. 2017.
