@@ -9,11 +9,12 @@ tags:
  - MT
 categories:
  - MT
+ - DL4MT
 ---
 
-
-## Introduction	
 In the past couple years, we have seen the rise of Transformer architectures in Natural Language Processing. Transformers revolutionized the speed and accuracy of machine translation systems, and alleviated the need for Recurrent Neural Networks and LSTMs to derive context and meaning for sequence to sequence modeling. Since the <em> Attention Is All You Need </em> paper was published in 2017, there have been many experimental application and fine-tuning improvements made upon the original model. The latest such improvement is the Generative Pre-Trained Transformer 3, or GPT-3.
+
+<!-- more -->
 
 GPT-3 is the third generation of the autoregressive language modeling GPT-n series created by OpenAI. Its architecture is exactly the same as the previous generation, GPT-2, with the exception of using alternating dense and locally banded sparce attention patterns. For this generation, OpenAI trained 8 different models with a variable number of parameters, layers, dimensions, learning rates, and batch sizes. Furthermore, unlike the GPT-2 which was trained on the WebText dataset, GPT-3 was trained on Common Crawl, which consists of nearly a trillion words. However, because this dataset is so large and unfiltered, various techniques had to be used to prevent overfitting the model and data contaimination. 
 
