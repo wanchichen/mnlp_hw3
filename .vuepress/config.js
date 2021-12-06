@@ -1,5 +1,5 @@
 module.exports = ctx => ({
-  "title": "Blog",
+  "title": "MLNLP Blog",
   "description": "Blogs on NLP, Machine Learning, Data Mining, and other AI related topics",
   "dest": "output",
   "base": '/blog/',
