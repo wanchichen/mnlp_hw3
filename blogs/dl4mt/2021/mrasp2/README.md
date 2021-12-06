@@ -12,9 +12,9 @@ categories:
 How to develop a single unified model to translate from any language to any language?
 This work proposes a many-to-many translation system with emphasis on both English-centric and non-English directions. Many recent works have focused on proposing a single unified model for multiligual translation. These models are favorable because they are efficient and easy for deployment. However, most of these works focus on improving English-centric directions, which means that translation between two arbitrary languages may not be well supported. Therefore, in this paper, they propose a training method called mRASP2, including contrastive learning and alignment augmentation (AA) to train a unified multilingual translation system.  They also contribute a monolingual dataset called MC24. By making use of monolingual and bilingual language copora, the system is able to learn language-agnostic representation to support non-English directions better than before. Their system achieves great performances and outperforms a strong Transformer baseline by a large margin.
 
-![image1](./img/teaser.png)
-
 <!-- more -->
+
+![image1](./img/teaser.png)
 
 
 # Method
