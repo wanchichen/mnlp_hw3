@@ -1,5 +1,5 @@
 ---
-Title: Learning Shared Semantic Space for Speech-to-Text Translation
+Title: Learning Shared Semantic Space for Speech Translation
 author: Xianjun Yang
 date: 2021-11-13
 tags:
@@ -27,11 +27,13 @@ The challenge comes from the intrinsic difference of modality between audio and 
 
 Reading Time: About 15 minutes.
 
+<!-- more -->
+
 Paper：<https://arxiv.org/pdf/2105.03095.pdf>
 
 Github: <https://github.com/Glaciohound/Chimera-ST>
 
-<!-- more -->
+
 
 ## Introduction
 ![image1](./c1.png)
