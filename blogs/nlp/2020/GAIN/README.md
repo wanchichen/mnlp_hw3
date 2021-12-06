@@ -1,14 +1,12 @@
 ---
 title: Document-level Relation Extraction
-author: 许润昕
+author: Runxin Xu
 date: 2020-11-20
 tags:
- - NLP
- - Document-level
- - Relation-Extraction
- - EMNLP
+ - Information extraction
+ - Relation extraction
 categories:
- - NLP
+ - IE
 ---
 
 **Double Graph Based Reasoning for Document-level Relation Extraction**

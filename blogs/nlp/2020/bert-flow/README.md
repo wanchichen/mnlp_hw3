@@ -1,17 +1,17 @@
 ---
 title: BERT-Flow
-author: 李博涵
+author: Bohan Li
 date: 2020-11-04
 tags:
- - AI
- - NLP
+ - Embedding
  - BERT
- - EMNLP
 categories:
  - NLP
 ---
 
 **On the Sentence Embeddings from Pre-trained Language Models**
+
+A easy fix to the sentence embeddings learned by pre-trained language models. 
 
 <!-- more -->
 
