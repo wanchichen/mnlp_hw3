@@ -2,7 +2,7 @@
 home: true
 heroText: null
 tagline: null
-bgImage: '/bg.png'
+# bgImage: '/bg.png'
 # heroImage: /hero.png
 # heroImageStyle: {
 #   maxWidth: '600px',
@@ -13,9 +13,9 @@ bgImage: '/bg.png'
 #   borderRadius: '1rem',
 # }  
 # blog 
-bgImageStyle: {
-height: '450px'
-}
+# bgImageStyle: {
+# height: '450px'
+# }
 isShowTitleInHome: false
 actionText: Guide
 actionLink: /views/other/guide
