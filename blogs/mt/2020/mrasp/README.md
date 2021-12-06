@@ -12,11 +12,10 @@ categories:
 
 Reading Time: About 15 minutes.
 
-Paper：https://arxiv.org/abs/2010.03142
+Paper：<https://arxiv.org/abs/2010.03142>
 
-Github: https://github.com/linzehui/mRASP
+Github: <https://github.com/linzehui/mRASP>
 
-Volctrans Experience Official Website: http://translate.volcengine.cn/
 <!-- more -->
 
 ## Introduction

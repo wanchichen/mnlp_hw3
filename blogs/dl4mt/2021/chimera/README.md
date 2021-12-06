@@ -1,5 +1,5 @@
 ---
-Title: Learning Shared Semantic Space for Speech Translation
+title: Learning Shared Semantic Space for Speech Translation
 author: Xianjun Yang
 date: 2021-11-13
 tags:
