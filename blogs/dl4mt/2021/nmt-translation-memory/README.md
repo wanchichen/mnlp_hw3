@@ -10,7 +10,7 @@ categories:
 ---
 
 
-Hello fellow readers! In this post, I would like to share a recent advance in the field of Machine Translation. The paper is Neural Machine Translation with Monolingual Translation Memory by Cai et al. It receives one of the six distinguished paper awards. 
+Hello fellow readers! In this post, I would like to share a recent advance in the field of Machine Translation. Specifically, I will be presenting the paper *Neural Machine Translation with Monolingual Translation Memory* by Cai et al, which received one of the six distinguished paper awards from ACL 2021. 
 
 Paper: <https://aclanthology.org/2021.acl-long.567/>
 Code: <https://github.com/jcyk/copyisallyouneed>
@@ -123,6 +123,9 @@ In order to pass the encodings and retrieved sentences to the translation model,
 
 Whew! That was a lot! Anyway, this is my possibly-confusing attempt at sharing one of the latest advances in Machine Translation. If you need any clarification (especially with the translation model above), definitely feel free to reach out! Otherwise, thank you so much for your patience to have made it this far. 
 
-## Reference 
+## References
 [1] Deng Cai, Yan Wang, Huayang Li, Wai Lam, Lemao Liu. Neural Machine Translation with Monolingual Translation Memory. ACL 2021.
+
 [2] Yang Feng, Shiyue Zhang, Andi Zhang, Dong Wang, Andrew Abel. Memory-augmented Neural Machine Translation. EMNLP 2017.
+
+[3] Victor Zhou. “Neural Networks from Scratch.” *Victor Zhou*, Victor Zhou, 9 Feb. 2020, https://victorzhou.com/series/neural-networks-from-scratch/. 
