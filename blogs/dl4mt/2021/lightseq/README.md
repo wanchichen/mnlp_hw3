@@ -14,7 +14,7 @@ categories:
 
 
 A high performance open-source library for NLP Transformer model training and inferencing. 
-
+<!-- more -->
 
 ## 1. What is LightSeq?
 ![logo](./lightseqlogo.png)
