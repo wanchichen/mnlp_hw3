@@ -10,7 +10,7 @@ categories:
 ---
 
 
-Hello fellow readers! In this post, I would like to share a recent advance in the field of Machine Translation. Specifically, I will be presenting the paper *Neural Machine Translation with Monolingual Translation Memory* by Cai et al, which received one of the six distinguished paper awards. 
+Hello fellow readers! In this post, I would like to share a recent advance in the field of Machine Translation. Specifically, I will be presenting the paper *Neural Machine Translation with Monolingual Translation Memory* by Cai et al, which received one of the six distinguished paper awards from ACL 2021. 
 
 Paper: <https://aclanthology.org/2021.acl-long.567/>
 Code: <https://github.com/jcyk/copyisallyouneed>
