@@ -6,6 +6,7 @@ tags:
  - Multilingual MT
  - Contrastive Learning
  - Zero-shot Translation
+ - mRASP
 categories:
  - MT
  - DL4MT

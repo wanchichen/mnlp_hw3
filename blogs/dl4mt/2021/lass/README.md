@@ -4,7 +4,8 @@ author: Wenda Xu
 date: 2021-11-19
 tags:
  - Multilingual MT
- - Language-specific sub-network
+ - Model Capacity
+ - Language-specific Sub-network
 categories:
  - MT
  - DL4MT

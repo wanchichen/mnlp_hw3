@@ -3,21 +3,22 @@ title: Document-level Relation Extraction
 author: Runxin Xu
 date: 2020-11-20
 tags:
- - Information extraction
  - Relation extraction
 categories:
  - IE
 ---
 
-**Double Graph Based Reasoning for Document-level Relation Extraction**
+The task of identifying semantic relations between entities from text, namely relation extraction (RE), plays a crucial role in a variety of knowledge-based applications. Previous methods focus on sentence-level RE, which predicts relations among entities in a single sentence. However, sentence-level RE models suffer from an inevitable limitation – they fail to recognize relations between entities across sentences. Hence, **extracting relations at the document-level is necessary** for a holistic understanding of knowledge in text.
+This blog describes a recent work on document-level relation extraction by Zeng et al. EMNLP 2020. 
 
 <!-- more -->
 
-## Background
 
-The task of identifying semantic relations between entities from text, namely relation extraction (RE), plays a crucial role in a variety of knowledge-based applications. Previous methods focus on sentence-level RE, which predicts relations among entities in a single sentence. However, sentence-level RE models suffer from an inevitable limitation – they fail to recognize relations between entities across sentences. Hence, **extracting relations at the document-level is necessary** for a holistic understanding of knowledge in text.
 
 ![image1](./image1.png)
+
+Paper: <https://arxiv.org/abs/2009.13752>
+Code: <https://github.com/DreamInvoker/GAIN>
 
 ## Challenges
 
@@ -112,5 +113,5 @@ Extracting inter-sentence relations and conducting relational reasoning are chal
 utilizes a heterogeneous Mention-level Graph to model the interaction among different mentions across the document and capture document-aware features. It also uses an Entity-level Graph with a proposed path reasoning mechanism to infer relations more explicitly. Experimental results on the large-scale human annotated dataset, DocRED, show GAIN outperforms previous methods, especially in inter-sentence and inferential relations scenarios. The ablation study also confirms the effectiveness of different modules in our model.
 
 ## Reference 
-
+- Shuang Zeng, Runxin Xu, Baobao Chang, Lei Li. Double Graph Based Reasoning for Document-level Relation Extraction. EMNLP 2020. 
 - Yuan Yao, Deming Ye, Peng Li, Xu Han, Yankai Lin, Zhenghao Liu, Zhiyuan Liu, Lixin Huang, Jie Zhou, Maosong Sun. 2019. DocRED: A Large-Scale Document-Level Relation Extraction Dataset. In Proceedings of ACL. 

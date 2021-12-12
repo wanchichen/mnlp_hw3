@@ -3,8 +3,8 @@ title:  Automatic Machine Translation Evaluation - COMET Explained
 author:  Xinyi Wang
 date: 2021-12-1
 tags:
- - MT evaluation
- - Pre-trained Langauge Model
+ - MT Evaluation
+ - Pre-trained Language Model
 categories:
  - MT
  - DL4MT

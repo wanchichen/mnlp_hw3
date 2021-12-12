@@ -5,6 +5,7 @@ date: 2021-11-25
 tags:
  - Variational Inference
  - Latent Variable Model
+ - Semi-supervised Machine Translation
 categories:
  - MT
  - DL4MT

@@ -1,5 +1,5 @@
 ---
-title: BERT-Flow
+title: What is the problem with BERT embeddings and how to fix them?
 author: Bohan Li
 date: 2020-11-04
 tags:
@@ -9,11 +9,15 @@ categories:
  - NLP
 ---
 
-**On the Sentence Embeddings from Pre-trained Language Models**
 
-A easy fix to the sentence embeddings learned by pre-trained language models. 
+This blog presents an easy fix to the sentence embeddings learned by pre-trained language models. 
+It is based on the paper: On the Sentence Embeddings from Pre-trained Language Models by Li et al EMNLP 2020. 
 
 <!-- more -->
+
+Paper: <https://arxiv.org/abs/2011.05864>
+Code: <https://github.com/bohanli/BERT-flow>
+
 
 ## Background
 
@@ -110,7 +114,7 @@ When combined with external supervision from NLI tasks, our method outperforms t
 We investigate the deficiency of the BERT sentence embeddings on semantic textual similarity. We propose a flow-based calibration which can effectively improve the performance. BERT-flow obtains significant performance gains over the SoTA sentence embeddings on a variety of semantic textual similarity tasks.
 
 ## Reference 
-
+- Bohan Li, Hao Zhou, Junxian He, Mingxuan Wang, Yiming Yang, Lei Li. On the Sentence Embeddings from Pre-trained Language Models. EMNLP 2020. 
 - Nils Reimers and Iryna Gurevych. 2019. SentenceBERT: Sentence embeddings using siamese BERT networks. In Proceedings of EMNLP-IJCNLP.
 - Jun Gao, Di He, Xu Tan, Tao Qin, Liwei Wang, and TieYan Liu. 2019. Representation degeneration problem in training natural language generation models. In Proceedings of ICLR.
 - Lingxiao Wang, Jing Huang, Kevin Huang, Ziniu Hu, Guangtao Wang, and Quanquan Gu. 2020. Improving neural language generation with spectrum control. In Proceedings of ICLR.

@@ -5,10 +5,8 @@ date: 2021-11-01
 tags:
  - Pre-trained Language Model
  - GPT
- - Machine Translation
- - Text Generation
 categories:
- - NLP
+ - NLG
  - DL4MT
 ---
 

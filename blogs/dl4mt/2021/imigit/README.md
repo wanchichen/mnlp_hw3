@@ -3,8 +3,9 @@ title: Can Visual Imagination Help Machine Translation?
 author: Yujie Lu
 date: 2021-11-21
 tags:
- - Machine Translation
  - Imagination
+ - Visual Machine Translation
+ - ImagiT
 categories:
  - MT
  - DL4MT
