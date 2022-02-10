@@ -41,11 +41,7 @@ The applications of LightSeq include Machine Translation, Text Generation, Dialo
 
 LightSeq improves the speed for both training and inference stages. Models like DeepSpeed[5] only accelerate the training, and tools like TensorRT,  FasterTransformer, or TurboTransformers only support optimizing the inference. Here are the comparison tables on different features between LightSeq and other models.
 
-*Replace the following with native table!!!*
-![Untitled](./Untitled%201.png)
-
-*Replace the following with native table!!!*
-![Untitled](./Untitled%202.png)
+![Features](./feature_table.png)
 
 Table 1. The tables above are from the [official Github repository](https://github.com/bytedance/lightseq).
 
@@ -126,8 +122,7 @@ If you want to run the training using FairSeq, run the following command.
 
 The plots below are the experiment results on WMT14 English to German translation tasks using Transformer-Big models. In all plots, FairSeq+LightSeq models are able to improve the performance to 3.5X maximum. 
 
-*Replace this with your own experimental results*
-![Untitled](./Untitled%206.png)
+![Training](./training_speed.png)
 
 
 The image above is from the [official Github repository](https://github.com/bytedance/lightseq).
@@ -136,8 +131,7 @@ The image above is from the [official Github repository](https://github.com/byte
 
 Here are the inference results using LightSeq, TensorFlow, PyTorch, and FasterTransformer on neural machine translation using Transformer-base models with beam search methods.
 
-*Replace this with your own results*
-![Untitled](./Untitled%207.png)
+![Inference](./inference_speed.png)
 
 The image above is from the [official Github repository](https://github.com/bytedance/lightseq).
 
@@ -147,19 +141,17 @@ The three images below are from the [Volctrans Blog on segmentfault.com](https:/
 
 X-axes are the Batch size and sequence length pairs, and Y-axes are the acceleration rates.
 
-*You should draw the figures yourself, without the Chinese text*
-![Untitled](./Untitled%208.png)
+![Beam Search T4](./beamsearch.png)
 
-![Untitled](./Untitled%209.png)
+![Beam Search P4](./beamsearchp4.png)
 
-![Untitled](./Untitled%2010.png)
+![Sampling](./samplingp4.png)
 
 ### 4.4 Real-world Cloud Computing Delay Test on GPT
 
 This plot shows the performance of deploying a GPT model to cloud computing. At 11:00, the delay performance decreased from 360 ms to 80 ms when LightSeq is turned on. 
 
-*Explain the figure*
-![Untitled](./Untitled%2011.png)
+![Real Work Load](./realworkload.png)
 
 The image above is from the [Volctrans Blog on segmentfault.com](https://segmentfault.com/a/1190000038523998).
 
