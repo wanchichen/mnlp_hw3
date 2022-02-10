@@ -1,5 +1,5 @@
 module.exports = ctx => ({
-  "title": "MLNLP Blog",
+  "title": "Learning and Language Blog",
   "description": "Blogs on NLP, Machine Learning, Data Mining, and other AI related topics",
   "dest": "output",
   "base": '/blog/',
@@ -60,13 +60,13 @@ module.exports = ctx => ({
     "friendLink": [
       {
         "title": "lileicc",
-        "desc": "lilei.02 的 GitHub",
+        "desc": "author's GitHub",
         "avatar": "https://avatars1.githubusercontent.com/u/1768854?s=460&u=c192aeaef1c9a2cd0e5e559bd390082e3dbada79&v=4",
         "link": "https://github.com/lileicc"
       },
       {
         "title": "lz1998",
-        "desc": "lizheng.lz1998 的 GitHub",
+        "desc": "lizheng.lz1998's GitHub",
         "email": "lizheng.lz1998@bytedance.com",
         "link": "https://github.com/lz1998"
       }

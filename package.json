@@ -1,14 +1,14 @@
 {
   "name": "aiblog",
   "version": "1.0.0",
-  "author": "reco_luan",
+  "author": "leili",
   "scripts": {
     "dev": "vuepress dev . --open --host \"localhost\"",
     "build": "vuepress build ."
   },
   "devDependencies": {
-    "vuepress": "1.8.2",
-    "vuepress-theme-reco": "1.6.6"
+    "vuepress": "1.9.2",
+    "vuepress-theme-reco": "1.6.10"
   },
   "description": "Machine Learning and Natural Language Processing Blog",
   "dependencies": {
