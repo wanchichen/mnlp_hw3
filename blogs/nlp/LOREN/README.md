@@ -19,6 +19,8 @@ Paper：<https://arxiv.org/abs/2012.13577>
 
 Github: <https://github.com/jiangjiechen/LOREN>
 
+Demo: <https://huggingface.co/spaces/Jiangjie/loren-fact-checking>
+
 ## Introduction
 
 ![image1](./jametlene-reskp-Q79XFGuTFfM-unsplash.jpg)
@@ -124,9 +126,17 @@ For claim one in the above figure, LOREN can detect which phrase is the culprit 
 
 For the phrase "a tree" in the claim, even though LOREN generates the correct local premise based on the evidence, it still considers the label of this phrase as supported. It is because LOREN does not possess commonsense knowledge, and we can see the probability of SUP and REF are very close, indicating that LOREN fails to distinguish "tree" and "edible fruit produced" as two completely different objects.
 
-<p align="center"><img src="./claim1.png" alt="image4"/><img src="./claim2.png" alt="image4"/></p>
+<p align="center"><img src="./claim1.png" alt="image4"/></p>
 
-Here's another interesting example of LOREN's output. For the claims "Donald Trump lost the 2020 election" and "Sacramento is the capital city of California", they are both supported by LOREN's prediction. However, when we turn them into non-sense claims by switching positions of two noun phrases in both claims, LOREN still considers them as supported claims. In my understanding, LOREN also seems do not fully understand the semantic of a claim. As we can see in the above two figures, though LOREN effectively grabs the correct evidence which all support the phrase-level veracities, it fails to understand the semantic meaning of these two claims to be incorrect. This makes sense because LOREN does not put emphasis on the semantics of the claims.
+Here's another interesting example of LOREN's output. For the claim "Alaska was Russian territory long ago", though LOREN found the correct evidence, but it predicted the claim as REFUTES. It is confusing because the United States purchased Alaska on 1867, and before that time, Alaska is Russian territory. How did LOREN make this mistake? The reason I think is due to LOREN's lack of common sense knowledge: maybe the data source does not contain that information. So I alter the claim to "Alaska was Russian Empire's territory long ago", and here's the result:
+
+<p align="center"><img src="./claim2.png" alt="image4"/></p>
+
+The result illustrated that LOREN knows Alaska was the territory of the Russian Empire since 186 because there was no country named Russia before that time. However, as humans, we always consider the Russian empire as Russia because its the history of that country. But for LOREN in this case, it seems do not know about how a country is related to its history. With such curiosity, I made another example:
+
+<p align="center"><img src="./claim3.png" alt="image4"/></p>
+
+Surprisingly, LOREN now understands the Qing dynasty is China with the given evidence because it searched evidence for the Qing dynasty, which explains China's last dynasty. In conclusion, I assume that LOREN's evidence ranking is immature because as we can see in the claim "Alaska was Russian territory long ago", though LOREN has the correct evidence for a human to prove the correctness of the claim, LOREN itself does not understand because it does not know about Russian Empire without digging deep to Russian history.
 
 ## Future improvements
 
