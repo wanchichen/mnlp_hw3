@@ -58,12 +58,12 @@ Overall, the claim verification process of LOREN is composed of these steps:
 The purpose of the first two steps is to look for the evidence that supports the phrase-level veracity, and by the mean of soft logic,
 which I will introduce later in the article, we can verify the claim and provide reasoning behind it. Here is an example from the original paper that better illustrated the overall idea:
 
-<p align="center">![image2](./image2.png)</p>
+<p align="center"><img src="./image2.png" alt="image4"/></p>
 Note that $c_1'$ in the above figure is supposed to be "Joe Biden won the 2020 election". This is the problem in evidence retrival part of LOREN, which I will address it later in the third session.
 
 ### Decomposition of the claim
 
-<p align="center">![image4](./result5.png)</p>
+<p align="center"><img src="./result5.png" alt="image4"/></p>
 
 The above figure shows an example how LOREN decomposes the claim into phrases. The idea behind the claim decomposition is straightforward: We extract verbs, adjective phrases, noun phrases, and name entities from the claim. To ensure the accuracy of the decomposition, LOREN leverage a part-of-speech (POS) tagger for identifying verbs and a constituency parser to identify noun phrases [2] as presented by step 1 in the above example. To decompose these noun phrases into fine-grained phrases, it further uses POS tagger and name entity recognizer to extract adjective phrases, name entities, and fine-grained noun phrases from the original noun phrases (Step 2).
 
@@ -106,25 +106,25 @@ Before we analyze the experiment result, I will summarize the experiment metrics
 1. Label Accuracy (LA): The accuracy of predicted label for claim regardless of retrieved evidence.
 2. FEVER score (FEV): The accuracy of both predicted label and retrieved evidence.
 
-<p align="center">![image2](./result1.png)</p>
+<p align="center"><img src="./result1.png" alt="image4"/></p>
 
 Let's look at the above overall performance of LOREN. We can see from the result that LOREN is either outperforming or comparable with other
 baseline method except for LisT5. This is mainly because the PLM for LisT5, which is T5, is larger than BERT and RoBERTa. However, LOREN still outperforms LisT5 on the FEVER score of the development set (dev). To summarize, the performance of LOREN is decent and it has the potential to achieve a better result.
 
 Here is a bar chart that can visualize LOREN's comparable test FEV score with other models:
 
-<p align="center">![image2](./bar_plot.png)</p>
+<p align="center"><img src="./bar_plot.png" alt="image4"/></p>
 
-<p align="center">![image3](./result2.png)</p>
+<p align="center"><img src="./result2.png" alt="image4"/></p>
 
 In addition, we will dive into the most important part of the experiment: a case study of the LOREN's interpretability.
 For claim one in the above figure, LOREN can detect which phrase is the culprit in the claim, and it's also providing the reasoning that why that phrase is causing the mistake, i.e., replacing the false phrase "the number three" with "the number one". In the third claim, LOREN shows its ability to detect multiple culprit phrases in the claim. However, for the second claim, the predicted result should be NEI. LOREN made this mistake mainly because of the evidence retrieval module and MRC module. First, the evidence retrieval module did not draw the correct evidence, and then the MRC module still replaced the original phrase even though there's no direct evidence given. Here's some examples that indicates a drawback of LOREN:
 
-<p align="center">![image4](./result3.png)</p>
+<p align="center"><img src="./result3.png" alt="image4"/></p>
 
 For the phrase "a tree" in the claim, even though LOREN generates the correct local premise based on the evidence, it still considers the label of this phrase as supported. It is because LOREN does not possess commonsense knowledge, and we can see the probability of SUP and REF are very close, indicating that LOREN fails to distinguish "tree" and "edible fruit produced" as two completely different objects.
 
-<p align="center">![image5](./claim1.png)  |  ![image6](./claim2.png)</p>
+<p align="center"><img src="./claim1.png" alt="image4"/><img src="./claim2.png" alt="image4"/></p>
 
 Here's another interesting example of LOREN's output. For the claims "Donald Trump lost the 2020 election" and "Sacramento is the capital city of California", they are both supported by LOREN's prediction. However, when we turn them into non-sense claims by switching positions of two noun phrases in both claims, LOREN still considers them as supported claims. In my understanding, LOREN also seems do not fully understand the semantic of a claim. As we can see in the above two figures, though LOREN effectively grabs the correct evidence which all support the phrase-level veracities, it fails to understand the semantic meaning of these two claims to be incorrect. This makes sense because LOREN does not put emphasis on the semantics of the claims.
 
