@@ -60,12 +60,12 @@ Overall, the claim verification process of LOREN is composed of these steps:
 The purpose of the first two steps is to look for the evidence that supports the phrase-level veracity, and by the mean of soft logic,
 which I will introduce later in the article, we can verify the claim and provide reasoning behind it. Here is an example from the original paper that better illustrated the overall idea:
 
-<p align="center"><img src="./image2.png" alt="image4"/></p>
+<p align="center"><img src="./image2.png" alt="image2"/></p>
 Note that $c_1'$ in the above figure is supposed to be "Joe Biden won the 2020 election". This is the problem in evidence retrival part of LOREN, which I will address it later in the third session.
 
 ### Decomposition of the claim
 
-<p align="center"><img src="./result5.png" alt="image4"/></p>
+<p align="center"><img src="./result5.png" alt="result5"/></p>
 
 The above figure shows an example how LOREN decomposes the claim into phrases. The idea behind the claim decomposition is straightforward: We extract verbs, adjective phrases, noun phrases, and name entities from the claim. To ensure the accuracy of the decomposition, LOREN leverage a part-of-speech (POS) tagger for identifying verbs and a constituency parser to identify noun phrases [2] as presented by step 1 in the above example. To decompose these noun phrases into fine-grained phrases, it further uses POS tagger and name entity recognizer to extract adjective phrases, name entities, and fine-grained noun phrases from the original noun phrases (Step 2).
 
@@ -108,35 +108,43 @@ Before we analyze the experiment result, I will summarize the experiment metrics
 1. Label Accuracy (LA): The accuracy of predicted label for claim regardless of retrieved evidence.
 2. FEVER score (FEV): The accuracy of both predicted label and retrieved evidence.
 
-<p align="center"><img src="./result1.png" alt="image4"/></p>
+<p align="center"><img src="./result1.png" alt="result1"/></p>
 
 Let's look at the above overall performance of LOREN. We can see from the result that LOREN is either outperforming or comparable with other
 baseline method except for LisT5. This is mainly because the PLM for LisT5, which is T5, is larger than BERT and RoBERTa. However, LOREN still outperforms LisT5 on the FEVER score of the development set (dev). To summarize, the performance of LOREN is decent and it has the potential to achieve a better result.
 
 Here is a bar chart that can visualize LOREN's comparable test FEV score with other models:
 
-<p align="center"><img src="./bar_plot.png" alt="image4"/></p>
+<p align="center"><img src="./bar_plot.png" alt="bar_plot"/></p>
 
-<p align="center"><img src="./result2.png" alt="image4"/></p>
+<p align="center"><img src="./result2.png" alt="result2"/></p>
 
 In addition, we will dive into the most important part of the experiment: a case study of the LOREN's interpretability.
 For claim one in the above figure, LOREN can detect which phrase is the culprit in the claim, and it's also providing the reasoning that why that phrase is causing the mistake, i.e., replacing the false phrase "the number three" with "the number one". In the third claim, LOREN shows its ability to detect multiple culprit phrases in the claim. However, for the second claim, the predicted result should be NEI. LOREN made this mistake mainly because of the evidence retrieval module and MRC module. First, the evidence retrieval module did not draw the correct evidence, and then the MRC module still replaced the original phrase even though there's no direct evidence given. Here's some examples that indicates a drawback of LOREN:
 
-<p align="center"><img src="./result3.png" alt="image4"/></p>
+<p align="center"><img src="./result3.png" alt="result3"/></p>
 
 For the phrase "a tree" in the claim, even though LOREN generates the correct local premise based on the evidence, it still considers the label of this phrase as supported. It is because LOREN does not possess commonsense knowledge, and we can see the probability of SUP and REF are very close, indicating that LOREN fails to distinguish "tree" and "edible fruit produced" as two completely different objects.
 
-<p align="center"><img src="./claim1.png" alt="image4"/></p>
+<p align="center"><img src="./claim2.png" alt="claim2"/></p>
+<p align="center"><img src="./outcome2.png" alt="outcome2"/></p>
 
-Here's another interesting example of LOREN's output. For the claim "Alaska was Russian territory long ago", though LOREN found the correct evidence, but it predicted the claim as REFUTES. It is confusing because the United States purchased Alaska on 1867, and before that time, Alaska is Russian territory. How did LOREN make this mistake? The reason I think is due to LOREN's lack of common sense knowledge: maybe the data source does not contain that information. So I alter the claim to "Alaska was Russian Empire's territory long ago", and here's the result:
+Here's another interesting example of LOREN's output. For the claim "Alaska was Russian territory long ago", though LOREN found the correct evidence, but it predicted the claim as REFUTES. It is confusing because the United States purchased Alaska on 1867, and before that time, Alaska is Russian territory. How did LOREN make this mistake? LOREN even has the evidence:"The Russian Empire was the first actively colonize the area beginning in the 18th century". In here I guess the reason's that LOREN does not consider Russian Empire is the same as Russian in the context of the claim, so I make another experiment by replacing "Russian" to "Russian Empire's":
 
-<p align="center"><img src="./claim2.png" alt="image4"/></p>
+<p align="center"><img src="./claim1.png" alt="claim1"/></p>
+<p align="center"><img src="./outcome1.png" alt="outcome1"/></p>
 
-The result illustrated that LOREN knows Alaska was the territory of the Russian Empire since 186 because there was no country named Russia before that time. However, as humans, we always consider the Russian empire as Russia because its the history of that country. But for LOREN in this case, it seems do not know about how a country is related to its history. With such curiosity, I made another example:
+The result illustrated that LOREN knows Alaska was the territory of the Russian Empire since 1867. The former claim verification failed because LOREN can only predict based on the current evidence retrieved. In the last claim, LOREN does not have the evidence showing Russia is Russian Empire, so it eventually believes the claim is false. However, as humans, we always consider the Russian empire as Russia because it's the history of that country. But for LOREN in this case, it does not know about how a country is related to its history without enough evidence. The main cause of this result is also the immaturity of evidence retrieval. In the next step, I will show the potential problems within LOREN's MRC mode.
 
-<p align="center"><img src="./claim3.png" alt="image4"/></p>
+<p align="center"><img src="./claim4.png" alt="claim4"/></p>
+<p align="center"><img src="./outcome3.png" alt="outcome3"/></p>
 
-Surprisingly, LOREN now understands the Qing dynasty is China with the given evidence because it searched evidence for the Qing dynasty, which explains China's last dynasty. In conclusion, I assume that LOREN's evidence ranking is immature because as we can see in the claim "Alaska was Russian territory long ago", though LOREN has the correct evidence for a human to prove the correctness of the claim, LOREN itself does not understand because it does not know about Russian Empire without digging deep to Russian history.
+Here I provide a successful prediction outcome, and as we can see, LOREN's evidence retrival and MRC model work well in this prediction except that it fails to predict the first local premises to be refuted. However, when I change "is" to "is not", a more weird thing happens: LOREN's MRC model does not change the origin local premises in the last example:
+
+<p align="center"><img src="./claim5.png" alt="claim5"/></p>
+<p align="center"><img src="./outcome4.png" alt="outcome4"/></p>
+
+As we can see for the second phrase "Mexico", LOREN still replaces the phrase with "the United States" and even calculates a higher probability of refutes than supports. For now I'm not certain why LOREN behaves like this, but I have an assumption: LOREN's MRC model does not successfully interpret the claim. To be more specific, the prediction of the first phrase in these two examples are contradicting with each other, indicating that LOREN fails to interpret the difference between "is" and "is not", although its probability of supported and refuted are close to each other in the second example. Back to the local premises construction (MRC) for the second phrase, LOREN again fails to differentiate the meaning of "is" and "is not", so it has the same prediction for the veracity of second phrase as REF.
 
 ## Future improvements
 
