@@ -19,7 +19,7 @@ Reading Time: About 10 minutes.
 
 Paper：<https://arxiv.org/abs/2012.13577>
 
-Github: <https://github.com/jiangjiechen/LOREN>
+Code: <https://github.com/jiangjiechen/LOREN>
 
 Demo: <https://huggingface.co/spaces/Jiangjie/loren-fact-checking>
 
