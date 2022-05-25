@@ -1,6 +1,6 @@
 {
-  "name": "aiblog",
-  "version": "1.0.0",
+  "name": "mlnlpblog",
+  "version": "1.0.1",
   "author": "leili",
   "scripts": {
     "dev": "vuepress dev . --open --host \"localhost\"",
@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "vuepress": "1.9.2",
-    "vuepress-theme-reco": "1.6.10"
+    "vuepress-theme-reco": "1.6.11"
   },
   "description": "Machine Learning and Natural Language Processing Blog",
   "dependencies": {
