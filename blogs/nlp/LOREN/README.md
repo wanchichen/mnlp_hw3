@@ -4,7 +4,9 @@ author: Ziyue Wang
 date: 2022-4-8
 tags:
   - Fact verafication
+  - Reasoning
   - Logic-regularized neural network
+  - Interpretable NLP
 categories:
   - NLP
 ---
@@ -47,17 +49,15 @@ In this article, I will introduce the model, LOREN, in three aspects:
 
 ## LOREN'S architecture
 
-Overall, the claim verification process of LOREN is composed of these steps:
+Overall, LOREN's claim verification process is composed of these steps:
 
-1. It decomposes a natural language statement into different phrases.
+1. It decomposes a natural language statement into different phrase units.
 
-2. For each phrase, LOREN will generate a probing question and retrieve the corresponding evidence, and then
-   it will establish a local premise for that phrase. The process of finding the relevant phrase to generate a local premise is called the machine reading comprehension (MRC) task.
+2. For each phrase, LOREN generates a probing question and use it to retrieve relevant evidences, and then it establishes a local premise for that phrase. 
 
-3. Given the probing question, evidence, and local premise, LOREN uses a latent model to first aggregate the veracity of each phrase using soft logic,
-   and it distills the knowledge by calculating the probability of the claim being SUP, REF, or NEI (distilling the knowledge)
+3. Given the probing questions, evidences, and local premises, LOREN uses a latent model to aggregate the veracity of each phrase using three-valued soft logic, and it finally calculates the probability of the claim being supportive (SUP), refuted (REF), or not enough information (NEI).
 
-The purpose of the first two steps is to look for the evidence that supports the phrase-level veracity, and by the mean of soft logic,
+The purpose of the first two steps is to look for the evidence that supports the phrase-level veracity, and by the means of soft logic,
 which I will introduce later in the article, we can verify the claim and provide reasoning behind it. Here is an example from the original paper that better illustrated the overall idea:
 
 <p align="center"><img src="./image2.png" alt="image2"/></p>
@@ -79,9 +79,9 @@ For the evidence retrieval part, we will assume it's done by an off-the-shelf te
 
 Before we dive into the detail of latent model, let me introduce the logic constraints that LOREN developed for predicting claim veracity based on the veracity of each phrase.
 
-1. A claim is SUP iff all phrases are SUP
-2. A claim is REF iff there's at least one phrase that is REF
-3. A claim is NEI iff neither above.
+1. A claim is supportive(SUP) iff all phrases are supportive(SUP)
+2. A claim is refuted(REF) iff there's at least one phrase that is refuted(REF)
+3. A claim is non-enough-information(NEI) iff neither above.
 
 Following the above logic rules, loren further soften these rules into a probability distribution.
 
