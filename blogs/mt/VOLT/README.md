@@ -1,7 +1,7 @@
 ---
 title: Learning Optimal Vocabularies for Machine Translation in 30 Minutes
 author: Ahmed Elkordy
-date: 2022-5-17
+date: 2022-05-17
 tags:
  - Multilingual MT
  - Vocabulary Learning

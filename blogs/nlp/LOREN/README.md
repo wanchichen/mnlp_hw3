@@ -1,7 +1,7 @@
 ---
 title: Automatic Verification of Natural Language Claims
 author: Ziyue Wang
-date: 2022-4-8
+date: 2022-04-08
 tags:
   - Fact verafication
   - Reasoning
