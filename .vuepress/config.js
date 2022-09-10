@@ -86,7 +86,6 @@ module.exports = ctx => ({
     "lineNumbers": true
   },
   "plugins": {
-    "@codeciting/vuepress-plugin-echarts": {},
     "vuepress-plugin-mathjax": {
       target: 'svg',
       macros: {
