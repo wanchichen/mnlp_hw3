@@ -12,6 +12,6 @@
   },
   "description": "Machine Learning and Natural Language Processing Blog",
   "dependencies": {
-    "vuepress-plugin-mathjax": "^1.2.8"
+    "vuepress-plugin-mathjax": "1.2.8"
   }
 }
