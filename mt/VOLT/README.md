@@ -1,5 +1,5 @@
 ---
-title: Learning Optimal Vocabularies for Machine Translation in 30 Minutes
+title: Learning Optimal Vocabularies for Machine Translation with only CPU
 author: Ahmed Elkordy
 date: 2022-05-17
 category:
@@ -13,9 +13,7 @@ star: true
 
 Constructing a vocabulary is a fisrt step for any NLP tasks. 
 How can we efficiently learn an optimal vocabulary for machine translation? 
-In this blog, I will explain the VOLT algorithm from the paper *Vocabulary Leaning via Optimal Transport for Neural Machine Translation*, which was awarded the best paper at ACL 2021.
-
-Reading time: About 8 minutes
+In this blog, I will explain the VOLT algorithm from the paper *Vocabulary Leaning via Optimal Transport for Neural Machine Translation*, which was awarded **the Best Paper** at ACL 2021.
 
 <!-- more -->
 
