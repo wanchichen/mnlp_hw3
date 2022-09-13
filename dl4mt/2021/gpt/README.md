@@ -10,7 +10,7 @@ category:
  - DL4MT
 ---
 
-In the past couple years, we have seen the rise of Transformer architectures in Natural Language Processing. Transformers revolutionized the speed and accuracy of machine translation systems, and alleviated the need for Recurrent Neural Networks and LSTMs to derive context and meaning for sequence to sequence modeling. Since the <em> Attention Is All You Need </em> paper was published in 2017, there have been many experimental application and fine-tuning improvements made upon the original model. The latest such improvement is the Generative Pre-Trained Transformer 3, or GPT-3.
+In the past couple years, we have seen the rise of Transformer architectures in Natural Language Processing. Transformers revolutionized the speed and accuracy of machine translation systems, and alleviated the need for Recurrent Neural Networks and LSTMs to derive context and meaning for sequence to sequence modeling. Since the *Attention Is All You Need* paper was published in 2017, there have been many experimental application and fine-tuning improvements made upon the original model. The latest such improvement is the Generative Pre-Trained Transformer 3, or GPT-3.
 
 <!-- more -->
 
@@ -18,7 +18,7 @@ GPT-3 is the third generation of the autoregressive language modeling GPT-n seri
 
 
 ## Novelty 
-Aside from the changes made above to the new model, the novelty of GPT-3 stems from its ability to use one-shot and few-shot demonstrations — it is not limited to zero-shot like GPT-2. To be more specific, this means that before actually testing GPT-3 on a specific task, the model can take a certain amount of examples <em> K </em> of the desired task as a form of conditioning before letting the model perform testing and inference on its own. For one-shot demonstrations, <em> K </em> is 1, and for few-shot demonstrations, <em> K </em> can be anywhere between 10 and 100 demonstrations of the task. This may sounds similar to fine-tuning a model, but there is one key difference: for these n-shot demonstrations, the model is <em> NOT </em> allowed to update its weights whereas for fine-tuning, the model is  <em> supposed </em> to update its weights. This novel approach of providing demonstrations before actual testing was specifically chosen because it best simulates human learning and behavior. Typically, when people are told to complete a task, they are usually offered one or more examples before having to attempt the task on their own. The table below illustrates the advantages and disadvantages of each of the different types of n-shots for GPT-3.
+Aside from the changes made above to the new model, the novelty of GPT-3 stems from its ability to use one-shot and few-shot demonstrations — it is not limited to zero-shot like GPT-2. To be more specific, this means that before actually testing GPT-3 on a specific task, the model can take a certain amount of examples  *K*  of the desired task as a form of conditioning before letting the model perform testing and inference on its own. For one-shot demonstrations,  *K* is 1, and for few-shot demonstrations, <em> K </em> can be anywhere between 10 and 100 demonstrations of the task. This may sounds similar to fine-tuning a model, but there is one key difference: for these n-shot demonstrations, the model is <em> NOT </em> allowed to update its weights whereas for fine-tuning, the model is  <em> supposed </em> to update its weights. This novel approach of providing demonstrations before actual testing was specifically chosen because it best simulates human learning and behavior. Typically, when people are told to complete a task, they are usually offered one or more examples before having to attempt the task on their own. The table below illustrates the advantages and disadvantages of each of the different types of n-shots for GPT-3.
 
 
 | Type | Advantages | Disadvantages |
@@ -35,9 +35,9 @@ With these new types of testing and inference methods, GPT-3 was evaluated on a 
 ### Translation 
 One of the tasks GPT-3 was tested on was its ability to perform sequence to sequence translation. The Common Crawl dataset OpenAI used to train their model contained English words 93% of the time and words from foreign languages 7% of the time. The words from the foreign natural languages were seamlessly blended together with the English text on a word, sentence, and document level. This allowed for the model to extract meaning and context from the foreign words, and be able to accurately translate them when asked to do so. From this translation test, GPT-3 resulted in a similar BLEU score compared to prior unsupervised NMT work. While zero-shot underperformed compared to prior works, one-shot improved the BLEU score by 4 and few-shot improved the BLEU score by 11. BLEU score improvement was especially noticed when translating phrases into English as opposed to translating sentence from English. In fact, some translations from English even outperform the best supervised results. The table and graph below shows the comparison of BLEU scores for each of the different n-shots and other NMT models, and how BLEU score changes with model size.
 
-![](bleu_table.png)
+![](./bleu_table.png)
 
-![](bleu_graph.png)
+![](./bleu_graph.png)
 
 ### Word Prediction and Text Generation 
 Another task GPT-3 was tested on was predicting the next word given a few sentences or a passage. A demonstration along the lines of <em> Alice was friends with Bob. Alice went to visit her friend __. → Bob </em> was given to the model as an example along with a task description. From examples like these, the largest GPT-3 model (with 175 billion parameters) outperformed the current state-of-the-art model by 20%, predicting the next word correctly 86.4% of the time. Even if a model was trained on this specific task  and outperformed a state-of-the-art model by 20%, it would still be extraordinary. 
@@ -59,24 +59,20 @@ As an experiment, I decided to test the BLEU score when translating a few phrase
 
 [Case Study Code](https://github.com/alexrasla/GPT-3-Blog)
 
-Prompt:
-<em>
-<br>
-Slovak: Dobré ráno!
-</br>
-English: Good morning!
-<br>
-Slovak: Ako sa máš?
-</br>
-English: How are you?
-<br>
-Slovak: Odkiaľ si?
-</br>
-English: Where are you from?
-<br>
-Slovak: 
-</br>
-</em>
+> Prompt:
+>   Slovak: Dobré ráno!
+>
+>   English: Good morning!
+>
+>   Slovak: Ako sa máš?
+>
+>   English: How are you?
+>
+>   Slovak: Odkiaľ si?
+>
+>   English: Where are you from?
+>
+>   Slovak: 
 
 
 | Slovak (Input) | Reference (Google Translate) | Candidate (GPT-3) | BLEU Score |
