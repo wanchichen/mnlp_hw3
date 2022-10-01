@@ -3,8 +3,11 @@ title: Multilingual MT Pre-training --- mRASP
 author:  Xiao Pan
 date: 2020-12-31
 tag:
- - Multilingual MT
+ - Multilingual Machine Translation
  - Pre-training
+ - Random Aligned Substitution
+ - Zero-shot MT
+ - mRASP
 category:
  - MT
 ---
@@ -12,8 +15,6 @@ category:
 ​	In 1920, the great philosopher Bertrand Russell visited China, accompanied by Yuen Ren Chao, a Chinese-American linguist. Mr. Chao was a naturally gifted polyglot. At that time, he could already speak Baoding dialect, Wu dialect, Fuzhou dialect, Nanjing dialect, and English. He accompanied Russell from Shanghai to Changsha by ship. During the trip, he was learning Changsha dialect from Yang Ruiliu, an economist on the same ship. When the ship docked in Changsha, Yuen Ren Chao was already able to translate Russell's speeches and slang into Changsha dialect. Can our neural network  become a model like "Yuen Ren Chao" on machine translation? That is, to create a unified model with multilingual abilities, and when encountering new languages, the model could quickly adapt to translating new ones after training with a small amount of data.
 
 <!-- more -->
-
-Reading Time: About 15 minutes.
 
 Paper：<https://arxiv.org/abs/2010.03142>
 
