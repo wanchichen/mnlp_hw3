@@ -3,10 +3,10 @@ title: Multilingual MT Pre-training --- mRASP
 author:  Xiao Pan
 date: 2020-12-31
 tag:
- - Multilingual Machine Translation
+ - Multilingual MT
  - Pre-training
  - Random Aligned Substitution
- - Zero-shot MT
+ - Zero-shot Translation
  - mRASP
 category:
  - MT
