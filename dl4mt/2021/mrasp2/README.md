@@ -7,6 +7,7 @@ tag:
  - Contrastive Learning
  - Zero-shot Translation
  - mRASP
+ - Random Aligned Substitution
 category:
  - MT
  - DL4MT
