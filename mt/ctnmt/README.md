@@ -3,9 +3,9 @@ title: 机器翻译中的 BERT 应用
 author:  王明轩
 date: 2020-12-31
 tag:
- - Machine Translation
  - BERT
  - Pre-training
+ - Catastrophic Forgetting
 category:
  - MT
 ---
