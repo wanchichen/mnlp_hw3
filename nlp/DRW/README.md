@@ -18,7 +18,7 @@ Natural language processing (NLP) is the branch of artificial intelligence that 
 
 Although these deployed NLP models provide a useful service to customers and businesses, there are significant challenges in providing the intellectual property of the creators of these models. Clients can use a process known as distillation to steal the parameters of the model to use for themselves. In this process, the attacker sends carefully designed queries to the API, specifically to learn the parameters of the model for malicious uses. Past attempts to prevent these attacks have involved the use of watermarking, in which a secret logo or signature is embedded in the model. In the event of a possible theft, a model owner can detect the watermark in the stolen model to establish ownership. However, these watermarks typically do not apply to NLP models, and they are invasive and fragile within their models. 
 
-Recently Zhao et al presents the protection method of NLP models from distillation through Distillation-Resistant Watermarking (DRW), published at EMNLP 2022. DRW allows for training independence, flexibility, effectiveness, and scalability. This paper explains the technique behind DRW, as well as four tasks the researchers performed in order to evaluate its effectiveness. 
+Recently Zhao et al presents the protection method of NLP models from distillation through Distillation-Resistant Watermarking (DRW), in a [paper][1] published at EMNLP 2022. DRW allows for training independence, flexibility, effectiveness, and scalability. This paper explains the technique behind DRW, as well as four tasks the researchers performed in order to evaluate its effectiveness. 
 
 Paper: <https://arxiv.org/abs/2210.03312>
 Code: <https://github.com/xuandongzhao/drw>
@@ -33,23 +33,28 @@ Figure 1: Model extraction and watermark detection
 Proprietary models have two possible types of output: soft labels (real values such as probabilities) and hard labels. An adversary can query the model, obtain a pseudo-labeled dataset from the results, and train a new model with this dataset in order to create the stolen model. Adversaries can distill a proprietary model with hard labels by minimizing the cross-entropy loss or distill a proprietary model with soft labels by minimizing the Kullback-Liebler divergence loss.
 With DRW, a watermark is dynamically embedded in query responses for theft detection. The following variables represent a key K:
 
-<img src="variables.png" alt="variables" width="400"/>
+![](./variables.png)
+<!-- <img src="" alt="variables" width="400"/> -->
 
 Taken together, these variables define a periodic signal function:
 
-<img src="periodicFunction.png" alt="periodic signal function" width="400"/>
+![](./periodicFunction.png)
+
+<!-- <img src="periodicFunction.png" alt="periodic signal function" width="400"/> -->
 
 where g is a hash function that projects a text representation to a scalar.
 
 Next, the periodic signal for the victim output is given by
 
-<img src="periodicSignal.png" alt="periodic signal" width="400"/>
+![](./periodicSignal.png)
+<!-- <img src="periodicSignal.png" alt="periodic signal" width="400"/> -->
 
 where $\epsilon$ is the watermark level for the periodic signal and $p_c$ is the proprietary model’s prediction prior to watermarking. For soft labels, the proprietary model generates the output directly, while for hard labels, the proprietary model generates a one-hot label with probability for each class. In the case of hard labels, the watermark is retained through the expectation of the probabilities.
 
 In order to detect the watermark in a suspect model, the Lomb-Scargle periodogram method for detecting period signals is used. It yields an estimate of the Fourier power spectrum at a given frequency, after which signal strength is evaluated by calculating the signal-to-noise ratio:
 
-<img src="signalToNoise.png" alt="signal to noise" width="400"/>
+![](./signalToNoise.png)
+<!-- <img src="signalToNoise.png" alt="signal to noise" width="400"/> -->
  
 A higher signal-to-noise ratio indicates a higher peak in the frequency domain, which can be used as evidence of theft.
 
@@ -63,18 +68,25 @@ The existing state-of-the-art method, DeepJudge, quantitatively tests similariti
 
 The researchers additionally evaluated the watermark level necessary to ensure detection while minimizing the effect on accuracy. They did so by varying the watermark level in the SST-2 task and evaluating model accuracy and watermark detection. As expected, a higher watermark level leads to better detection but a lower model accuracy. The results are given in the graphs below:
 
-<img src="watermarkAccuracy.png" alt="graph of accuracy" width="400"/>
-<img src="watermarkDetection.png" alt="graph of detection" width="400"/>
+![](./watermarkAccuracy.png)
+Model accuracy on SST-2 task after watermark. 
+<!-- <img src="watermarkAccuracy.png" alt="graph of accuracy" width="400"/> -->
+
+![](./watermarkDetection.png)
+Detection rate with DRW.
+<!-- <img src="watermarkDetection.png" alt="graph of detection" width="400"/> -->
 
 In another experiment, researchers designed 10 sets of ranking tasks, building 10 positive and 20 negative samples with a watermark level from 0.02 to 0.2. At a watermark level below 0.12, DRW could not perfectly detect positive and negative suspects.
 
 Researchers also evaluated whether categories affect watermark protection. Watermarks were added to four different categories, and extracted models were trained using soft distillation and hard distillation. Results, shown below, indicate that the watermark has a greater effect when a category involves more samples.
 
-<img src="watermarkCategory.png" alt="graph of categories" width="400"/>
+![](./watermarkCategory.png)
+<!-- <img src="watermarkCategory.png" alt="graph of categories" width="400"/> -->
 
 One final aspect of this model that researchers evaluated is how much of the proprietary model output should be watermarked. The researchers performed tasks while modifying the ratio of watermarked data. Similar to the watermark level, results (show below) show that model accuracy is negatively affected by a higher ratio, but watermark detection is improved. 
 
-<img src="dataSelection.png" alt="graphs of data selection" width="800"/>
+![](./dataSelection.png)
+<!-- <img src="dataSelection.png" alt="graphs of data selection" width="800"/> -->
 
 ## Limitations
 
