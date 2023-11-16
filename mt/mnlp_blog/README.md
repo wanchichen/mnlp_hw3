@@ -23,6 +23,22 @@ Code: <https://github.com/NJUNLP/MMT-LLM>
 
 ### Evaluated Models
 
+This study compared eight LLMs (XGLM-7.5B, OPT-175B, Falcon-7B, BLOOMZ-7.1B, LLAMA2-7B, LLAMA2-7B-chat, ChatGPT, and GPT-4) with three dedicated multilingual translation models (M2M-100-12B, NLLB-1.3B, and Google Translate).
+
+|  Model  | Type | Parameters | Notes | 
+| :----------:| :---: | :----: | :----: | 
+|  XGLM | LLM | 7.5B | Multilingual | 
+|  OPT | LLM | 175B | |
+|  Falcon | LLM | 7B | |
+|  BLOOMZ | LLM | 7.1B |  Multilingual | 
+|  LLaMA2 | LLM | 7B | | 
+|  LLaMA2-chat | LLM | 7B | Trained for chatting | 
+|  ChatGPT | LLM | 175B | Trained for chatting | 
+|  GPT-4 | LLM | Unknown | Commercial product, multimodal, trained for chatting | 
+|  M2M-100 | MT | 12B | Trained on 100 languages | 
+|  NLLB | MT | 1,3B | Trained on 200 languages |
+| Google Translate | MT | Unknown | Commercial product|
+
 ## LLMs vs Dedicated MT Models
 
 ## Factors that Influence an LLM's Translation Performance
