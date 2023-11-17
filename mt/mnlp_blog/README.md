@@ -21,6 +21,22 @@ Code: <https://github.com/NJUNLP/MMT-LLM>
 
 ## In-Context Learning
 
+Large-scale machine learning models are trained on an extremely vast amount of data. But when it comes down to actual usage, we typically only need these models to perform certain tasks in certain domains. Thus, it is common to take a model pre-trained on a large general dataset and fine-tune it on a smaller task/domain specific dataset. However, this process is still expensive, as the amount of data necessary to achieve good performance on specific tasks after fine-tuning is still rather large, and the fine-tuning process itself requires access to GPU compute. Can we instead teach a model to perform a task without fine-tuning?
+
+Recent research has shown that we can do achieve this with, in-context learning (ICL): the concept of showing an LLM a few examples of a task, before asking it to complete the task for a new data. In the context of translation, for example, this can be done by giving the LLM a few example translations, such as:
+
+```
+I love potatoes -> J'aime les pommes de terre
+Where did you buy that purse? -> Où as-tu acheté ce sac à main?
+You can feed deer at Nara Park -> Vous pouvez nourrir les cerfs au parc de Nara
+```
+
+Before asking it giving it this task:
+```
+Let’s see if its value is mentioned in any other responses. ->
+```
+As you can probably guess, the examples you give the LLM can significantly affect its ability to perform ICL. The examples need to be represent the different possible ways to properly perform the task. As such, you may need to perform significant amounts of engineering to properly teach the LLM more difficult tasks, such as translation with rare languages or uncommon language pairs. ICL is possible in LLMs due to the nature of their pre-training task: predicting the next word. The examples provided by the user for ICL becomes the context the LLM uses to reatedly predict the next word, evenutally forming an output translation. This makes ICL a property mostly unique to LLMs, as it requires a specific pre-training type, along with a sufficiently large model/dataset.
+
 ## LLMs vs Dedicated MT Models
 
 ### Evaluated Models
@@ -44,6 +60,9 @@ The study compared eight LLMs (XGLM-7.5B, OPT-175B, Falcon-7B, BLOOMZ-7.1B, LLAM
 We categorize each model by their type and also include their number of parameters, which represenmts the size of the model. Having more parameters allows the model to store more information. You can think of it like the size of the AI's brain: a bigger brain is smarter than a smaller one, but more expensive to maintain. You'll also notice that some LLMs are denoted as multilingual, meaning their creators chose to specifically give them more training data from languages other than English. That doesn't mean the other LLMs aren't trained on other languages, they just see much less of it and aren't optimized for handling more languages [1].
 
 ## Factors that Influence an LLM's Translation Performance
+
+1. LLMs can acquire translation ability in a resource-efficient way.
+2. Good performance requires a carefully-designed template
 
 ## How to use In-Context Learning on your own Data
 
