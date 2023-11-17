@@ -63,6 +63,11 @@ We categorize each model by their type and also include their number of paramete
 
 1. LLMs can acquire translation ability in a resource-efficient way.
 2. Good performance requires a carefully-designed template
+3. Even unreasonable template can instruct LLM to generate decent translation
+4. Cross-lingual exemplars help for certain translation directions
+5. Semantically-related exemplars does not brings more benefits than randomly-picked exemplars
+6. Exemplars teach LLM the core feature of translation task
+7. The exemplar in the tail of the prompt has more impact  on  the  LLM’s  behaviour
 
 ## How to use In-Context Learning on your own Data
 
