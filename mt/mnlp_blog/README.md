@@ -96,23 +96,36 @@ The main research question of the paper is to investigate whether LLMs are good 
 
 ## How to use In-Context Learning on your own Data
 
-Thanks to the availability of models like ChatGPT, the experiments of these papers can easily be applied to new datasets. We first do a comparison between ChatGPT and GPT4 via a qualitative evaluation for English to French. Then, we extend the authors' study on the effects of ICL to the new Quechua to Spanish translation pair.
+Thanks to the availability of models like ChatGPT, the experiments of these papers can easily be applied to new datasets. We first do a comparison between ChatGPT and GPT4 via a qualitative evaluation for English to French as an example of high-resource language. Then, we extend the authors' study on the effects of ICL to the new Quechua to Spanish translation pair to show the models performance on a low-resource language.
 
-We tried replicating the results that the authors presented by prompting the publicly available large language models. We consider two popular models: Chat-GPT and GPT-4. Note that GPT-4 is the most recent one from OpenAI and it is reported that it performs surprisingly well on the high-resource languages and reasonably well even on low-resource languages. We used French as an example of high-resource language and Quechua low-resource language. We tried both zero-shot and few-shot settings with the following prompt format. 
+For French, we tried both zero-shot and 5-shot settings. For the 5-shot setting we randomly picked 5 French sentences from WMT 2014 dataset and used the following format for the prompt.
 ```
-Here are some parallel sentences between X and Y:
+Here are some parallel sentences between English and French:
 
-X1
-Y1
-
-...
-
-X5
-Y6
+(5 examples)
 
 Now can you help me translate the following sentence?
-X
+(Sentence to translate to French)
 ```
+
+In both zero-shot and few-shot settings, the model produced a high quality translation like below:
+````
+# source sentence
+Mr. Hawkins stressed that a soldier could be prepared for his departure, with planning and consultation sessions, but that this was totally different than wanting to leave the army.
+
+# reference target
+M. Hawkins a souligné qu'un soldat pouvait être préparé à partir, avec des plans et des séances de consultation, mais que cela était totalement différent que le fait de vouloir quitter les rangs.
+
+# zero-shot
+M. Hawkins a souligné qu'un soldat pouvait être préparé à son départ, avec des séances de planification et de consultation, mais que cela était totalement différent de vouloir quitter l'armée.
+
+# few-shot
+M. Hawkins a souligné qu'un soldat pourrait être préparé à son départ avec des sessions de planification et de consultation, mais que cela était totalement différent du désir de quitter l'armée.
+```
+Since zero-shot result was already faithful to the source English sentence, we did not see significant quality improvement when adding examples that the model can learn in-context. In fact, the only difference between the zero-shot translation and the few-shot result was the minor change in conjugation and the sentence were nearly identical to each other in terms of the contents.
+
+
+
 
 ### Quechua to Spanish
 
