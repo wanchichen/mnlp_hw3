@@ -123,18 +123,6 @@ We obtain data for Quechua to Spanish from Ortega et al. [2], which contains cle
 |  ChatGPT | LLM | 8.9 | 
 |  ChatGPT | LLM + ICL| 17.4 |
 |  Google Translate | MT| 19.9 |
-|  Ortega et al. | MT| 22.9|
-| Chen and Fazio | MT | 23.7 |
-
-### Quechua to Spanish
-
-We obtain data for Quechua to Spanish from Ortega et al. [2], which contains cleaned parallel sentences taken from the Bible. We use the test set for our evaluation and randomly take 5 sentences from the development set for the ICL examples.
-
-|  Model  | Type | BLEU | 
-| :----------:| :---: | :----: |
-|  ChatGPT | LLM | 8.9 | 
-|  ChatGPT | LLM + ICL| 17.4 |
-|  Google Translate | MT| 19.9 |
 |  Ortega et al. [2] | MT| 22.9|
 | Chen and Fazio [3] | MT | 23.7 |
 
