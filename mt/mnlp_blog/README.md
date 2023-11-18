@@ -109,7 +109,7 @@ Now can you help me translate the following sentence?
 ```
 
 In both zero-shot and few-shot settings, the model produced a high quality translation like below:
-````
+```
 # source sentence
 Mr. Hawkins stressed that a soldier could be prepared for his departure, with planning and consultation sessions, but that this was totally different than wanting to leave the army.
 
