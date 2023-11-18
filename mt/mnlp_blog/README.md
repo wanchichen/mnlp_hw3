@@ -23,7 +23,7 @@ Code: <https://github.com/NJUNLP/MMT-LLM>
 
 Large-scale machine learning models are trained on an extremely vast amount of data. But when it comes down to actual usage, we typically only need these models to perform certain tasks in certain domains. Thus, it is common to take a model pre-trained on a large general dataset and fine-tune it on a smaller task/domain specific dataset. However, this process is still expensive, as the amount of data necessary to achieve good performance on specific tasks after fine-tuning is still rather large, and the fine-tuning process itself requires access to GPU compute. Can we instead teach a model to perform a task without fine-tuning?
 
-Recent research has shown that we can do achieve this with, in-context learning (ICL): the concept of showing an LLM a few examples of a task, before asking it to complete the task for a new data. In the context of translation, for example, this can be done by giving the LLM a few example translations, such as:
+Recent research has shown that we can achieve this with in-context learning (ICL), the concept of showing an LLM a few examples of a task before asking it to complete the task for a new data. In the context of translation, for example, this can be done by giving the LLM a few example translations, such as:
 
 ```
 I love potatoes -> J'aime les pommes de terre
@@ -35,7 +35,7 @@ Before asking it giving it this task:
 ```
 Let’s see if its value is mentioned in any other responses. ->
 ```
-As you can probably guess, the examples you give the LLM can significantly affect its ability to perform ICL. The examples need to be represent the different possible ways to properly perform the task. As such, you may need to perform significant amounts of engineering to properly teach the LLM more difficult tasks, such as translation with rare languages or uncommon language pairs. ICL is possible in LLMs due to the nature of their pre-training task: predicting the next word. The examples provided by the user for ICL becomes the context the LLM uses to reatedly predict the next word, evenutally forming an output translation. This makes ICL a property mostly unique to LLMs, as it requires a specific pre-training type, along with a sufficiently large model/dataset.
+As you can probably guess, the examples you give the LLM can significantly affect its ability to perform ICL. The examples need to represent the different possible ways to properly perform the task. As such, you may need to perform significant amounts of engineering to properly teach the LLM more difficult tasks, such as translation with rare languages or uncommon language pairs. ICL is possible in LLMs due to the nature of their pre-training task: predicting the next word. The examples provided by the user for ICL becomes the context the LLM uses to repeatedly predict the next word, eventually forming an output translation. This makes ICL a property mostly unique to LLMs, as it requires a specific pre-training type, along with a sufficiently large model/dataset.
 
 ## Experimental setup
 One of the main contributions of the paper is that the authors performed extensive analysis of diverse models and diverse languages. We first present the list of models and language they considered in the paper. 
