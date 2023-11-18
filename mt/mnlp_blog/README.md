@@ -127,7 +127,7 @@ M. Hawkins a souligné qu'un soldat pouvait être préparé à son départ, avec
 # GPT-4 few-shot
 M. Hawkins a souligné qu'un soldat pourrait être préparé à son départ avec des sessions de planification et de consultation, mais que cela était totalement différent du désir de quitter l'armée.
 ```
-The first observation from the Chat-GPT's outputs are that the translations in both settings are both very accurate.  In fact, the only difference between the zero-shot translation and the few-shot result was the minor change in conjugation (pouvait être -> pourrait être) and the sentence were identical to each other in terms of the contents. 
+The first observation from the Chat-GPT's outputs are that the translations in both settings are both very accurate.  In fact, the only difference between the zero-shot translation and the few-shot result was the minor change in conjugation ('pouvait être' -> 'pourrait être') and the sentence were identical to each other in terms of the contents. 
 
 The result for GPT-4 is very similar. Since zero-shot result was already faithful to the source English sentence, we did not see significant quality improvement when adding examples that the model can learn in-context. The zero-shot output used the word 'séances' whereas the few-shot model used 'sessions', but they are synonyms.
 
