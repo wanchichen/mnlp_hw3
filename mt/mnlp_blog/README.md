@@ -126,9 +126,27 @@ We obtain data for Quechua to Spanish from Ortega et al. [2], which contains cle
 |  Ortega et al. | MT| 22.9|
 | Chen and Fazio | MT | 23.7 |
 
+### Quechua to Spanish
+
+We obtain data for Quechua to Spanish from Ortega et al. [2], which contains cleaned parallel sentences taken from the Bible. We use the test set for our evaluation and randomly take 5 sentences from the development set for the ICL examples.
+
+|  Model  | Type | BLEU | 
+| :----------:| :---: | :----: |
+|  ChatGPT | LLM | 8.9 | 
+|  ChatGPT | LLM + ICL| 17.4 |
+|  Google Translate | MT| 19.9 |
+|  Ortega et al. [2] | MT| 22.9|
+| Chen and Fazio [3] | MT | 23.7 |
+
+We find that the LLM's out-of-the-box performance is quite poor, obtaining only 8.9 BLEU (out of 100 total). Using ICL, however, significanlty improves the results to 17.4, almost performing as well as Google Translate (a multilingual MT model). However, neither result outperforms dedicated bilingual MT models [2,3] trained on in-domain data. That being said, the LLM's performance on Quechua-Spanish is already very impressive, and further improvements can likely be obtained with better ICL strategies.
+
 ## Conclusion
 
 ## References
 
 [1] Briakou, Eleftheria, Colin Cherry, and George Foster. "Searching for Needles in a Haystack: On the Role of Incidental Bilingualism in PaLM's Translation Capability." arXiv preprint arXiv:2305.10266 (2023).
+
 [2] Ortega, John E., Richard Castro Mamani, and Kyunghyun Cho. "Neural machine translation with a polysynthetic low resource language." Machine Translation 34, no. 4 (2020): 325-346.
+
+[3] Chen, William, and Brett Fazio. "Morphologically-guided segmentation for translation of agglutinative low-resource languages." In Proceedings of the 4th Workshop on Technologies for MT of Low Resource Languages (LoResMT2021), pp. 20-31. 2021.
+
