@@ -37,7 +37,8 @@ Let’s see if its value is mentioned in any other responses. ->
 ```
 As you can probably guess, the examples you give the LLM can significantly affect its ability to perform ICL. The examples need to be represent the different possible ways to properly perform the task. As such, you may need to perform significant amounts of engineering to properly teach the LLM more difficult tasks, such as translation with rare languages or uncommon language pairs. ICL is possible in LLMs due to the nature of their pre-training task: predicting the next word. The examples provided by the user for ICL becomes the context the LLM uses to reatedly predict the next word, evenutally forming an output translation. This makes ICL a property mostly unique to LLMs, as it requires a specific pre-training type, along with a sufficiently large model/dataset.
 
-## LLMs vs Dedicated MT Models
+## Experimental setup
+One of the main contributions of the paper is that the authors performed extensive analysis of diverse models and diverse languages. We first present the list of models and language they considered in the paper. 
 
 ### Evaluated Models
 
@@ -58,6 +59,19 @@ The study compared eight LLMs (XGLM-7.5B, OPT-175B, Falcon-7B, BLOOMZ-7.1B, LLAM
 | Google Translate | MT | Unknown | Commercial product|
 
 We categorize each model by their type and also include their number of parameters, which represenmts the size of the model. Having more parameters allows the model to store more information. You can think of it like the size of the AI's brain: a bigger brain is smarter than a smaller one, but more expensive to maintain. You'll also notice that some LLMs are denoted as multilingual, meaning their creators chose to specifically give them more training data from languages other than English. That doesn't mean the other LLMs aren't trained on other languages, they just see much less of it and aren't optimized for handling more languages [1].
+
+### Evaluated Languages
+![[Multilingual Translation Performance.png]]
+The above diagram shows the language families used in the evaluation. The paper considers 102 languages in 8 different language families. The number of languages in each bucket varies from 2 (Atlantic-Congo) to 13 (Other). The comprehensive list of languages can be found in Table 8 in the Appendix of the paper. Except for the experiment in Table 2, the paper considers English-centric translation meaning that either source or target language is English.
+
+
+## LLMs vs Dedicated MT Models
+
+The main research question of the paper is to investigate whether LLMs are good enough translators. The authors have evaluated the various models extensively on diverse languages and presented the characteristics of the LLMs as a translator in various aspects. Here are the main findings:
+1. **The multilingual translation capabilities of LLMs are continually improving**. The extensive evaluation of models revealed that more recent models like LLaMA2-7B perform better than the previously released LLMs. In particular, it was GPT-4 which is the most up-to-date model that achieved the highest average score in most directions in terms of BLEU and COMET. This suggests that it is possible to enhance the translation quality of these LLMs without using explicit parallel data.
+2. **LLM’s capability is unbalanced across languages**. Although the model shows surprisingly good translation quality, it should be noted that their capabilities shine when the model is asked to translate sentences into English rather than translating from English. Additionally, the performance in other languages seems to be correlated with linguistic similarities with English. For example, the model showed much more impressive results in German than in Sino-Tibetan languages.
+3. **LLMs still lag behind the strong supervised baseline, especially in low-resource languages**. Although it is surprising that the LLMs perform reasonably well without supervised training, it is not competitive with the tailored MT systems yet. Concretely, NLLB, which is a model that was specifically trained for translation outperformed GPT-4 in more than 40% of the translation directions. When compared to the commercial system which has dedicated pre/post-processing steps on top of the neural models, the LLMs underperformed in most language directions as depicted in Figure 1.
+
 
 ## Factors that Influence an LLM's Translation Performance
 
