@@ -61,7 +61,8 @@ The study compared eight LLMs (XGLM-7.5B, OPT-175B, Falcon-7B, BLOOMZ-7.1B, LLAM
 We categorize each model by their type and also include their number of parameters, which represenmts the size of the model. Having more parameters allows the model to store more information. You can think of it like the size of the AI's brain: a bigger brain is smarter than a smaller one, but more expensive to maintain. You'll also notice that some LLMs are denoted as multilingual, meaning their creators chose to specifically give them more training data from languages other than English. That doesn't mean the other LLMs aren't trained on other languages, they just see much less of it and aren't optimized for handling more languages [1].
 
 ### Evaluated Languages
-<img width="528" alt="Multilingual Translation Performance" src="https://github.com/wanchichen/mnlp_hw3/assets/29157715/75a65a50-4cb6-4073-8f1a-ff18ba0ba0db">
+<img width="528" alt="Multilingual Translation Performance" src="https://github.com/wanchichen/mnlp_hw3/assets/29157715/e7b7d269-09ec-4fb2-99cb-724b16597410">
+
 
 The above diagram shows the language families used in the evaluation. The paper considers 102 languages in 8 different language families. The number of languages in each bucket varies from 2 (Atlantic-Congo) to 13 (Other). The comprehensive list of languages can be found in Table 8 in the Appendix of the paper. Except for the experiment in Table 2, the paper considers English-centric translation meaning that either source or target language is English.
 
