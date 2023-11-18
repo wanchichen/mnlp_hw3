@@ -112,17 +112,24 @@ In both zero-shot and few-shot settings, the model produced a high quality trans
 ```
 # source sentence
 Mr. Hawkins stressed that a soldier could be prepared for his departure, with planning and consultation sessions, but that this was totally different than wanting to leave the army.
-
 # reference target
 M. Hawkins a souligné qu'un soldat pouvait être préparé à partir, avec des plans et des séances de consultation, mais que cela était totalement différent que le fait de vouloir quitter les rangs.
 
-# zero-shot
+# Chat-GPT zero-shot
+M. Hawkins a souligné qu'un soldat pourrait être préparé à son départ avec des sessions de planification et de consultation, mais que cela était totalement différent du désir de quitter l'armée.
+
+# Chat-GPT few-shot
+M. Hawkins a souligné qu'un soldat pouvait être préparé à son départ, avec des sessions de planification et de consultation, mais que cela était totalement différent du désir de quitter l'armée.
+
+# GPT-4 zero-shot
 M. Hawkins a souligné qu'un soldat pouvait être préparé à son départ, avec des séances de planification et de consultation, mais que cela était totalement différent de vouloir quitter l'armée.
 
-# few-shot
+# GPT-4 few-shot
 M. Hawkins a souligné qu'un soldat pourrait être préparé à son départ avec des sessions de planification et de consultation, mais que cela était totalement différent du désir de quitter l'armée.
 ```
-Since zero-shot result was already faithful to the source English sentence, we did not see significant quality improvement when adding examples that the model can learn in-context. In fact, the only difference between the zero-shot translation and the few-shot result was the minor change in conjugation and the sentence were nearly identical to each other in terms of the contents.
+The first observation from the Chat-GPT's outputs are that the translations in both settings are both very accurate.  In fact, the only difference between the zero-shot translation and the few-shot result was the minor change in conjugation (pouvait être -> pourrait être) and the sentence were identical to each other in terms of the contents. 
+
+The result for GPT-4 is very similar. Since zero-shot result was already faithful to the source English sentence, we did not see significant quality improvement when adding examples that the model can learn in-context. The zero-shot output used the word 'séances' whereas the few-shot model used 'sessions', but they are synonyms.
 
 
 
