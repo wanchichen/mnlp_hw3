@@ -150,6 +150,8 @@ We find that the LLM's out-of-the-box performance is quite poor, obtaining only 
 
 ## Conclusion
 
+In conclusion, the authors showed that LLMs can be strong translators, but they only outperform convential translation systems for specific settings/languages. We discussed how in-context learning can be used to enhance the performance of LLMs on translation in a resource-efficient manner, showing different cases where it can be useful. We also talked about how in-context learning can require significant amounts of tuning, finding that different templates can significantly alter performance. Finally, we extended the authors' study on how in-context learning can be used to improve results by translating our down data, performing a case studies with the high resource English-to-French and low-resource Quechua-to-Spanish. Our results indicate that there was little difference in the high-resource pair, since the model's outputs were already very high quality. However, in-context learning led to significant gains for the low-resource pair, increasing the BLEU score from 8.9 to 17.4.
+
 ## References
 
 [1] Briakou, Eleftheria, Colin Cherry, and George Foster. "Searching for Needles in a Haystack: On the Role of Incidental Bilingualism in PaLM's Translation Capability." arXiv preprint arXiv:2305.10266 (2023).
