@@ -96,7 +96,7 @@ The main research question of the paper is to investigate whether LLMs are good 
 
 ## How to use In-Context Learning on your own Data
 
-Thanks to the availability of models like ChatGPT, the experiments of these papers can easily be applied to new datasets. We first do a comparison between ChatGPT and GPT4 via a qualitative evaluation for English to French as an example of high-resource language. Then, we extend the authors' study on the effects of ICL to the new Quechua to Spanish translation pair to show the models performance on a low-resource language.
+Thanks to the availability of models like ChatGPT, the experiments of these papers can easily be applied to new datasets. We first do a comparison between ChatGPT and GPT4 via a qualitative evaluation for English to French as an example of a high-resource language. Then, we extend the authors' study on the effects of ICL to the new Quechua to Spanish translation pair to show the models' performance on a low-resource language.
 
 For French, we tried both zero-shot and 5-shot settings. For the 5-shot setting we randomly picked 5 French sentences from WMT 2014 dataset and used the following format for the prompt.
 ```
@@ -127,9 +127,9 @@ M. Hawkins a souligné qu'un soldat pouvait être préparé à son départ, avec
 # GPT-4 few-shot
 M. Hawkins a souligné qu'un soldat pourrait être préparé à son départ avec des sessions de planification et de consultation, mais que cela était totalement différent du désir de quitter l'armée.
 ```
-The first observation from the Chat-GPT's outputs are that the translations in both settings are both very accurate.  In fact, the only difference between the zero-shot translation and the few-shot result was the minor change in conjugation ('pouvait être' -> 'pourrait être') and the sentence were identical to each other in terms of the contents. 
+The first observation from the Chat-GPT's outputs are that the translations in both settings are both very accurate.  In fact, the only difference between the zero-shot translation and the few-shot result was the minor change in conjugation ('pouvait être' -> 'pourrait être') and the sentences were otherwise identical to each other in terms of the contents. 
 
-The result for GPT-4 is very similar. Since zero-shot result was already faithful to the source English sentence, we did not see significant quality improvement when adding examples that the model can learn in-context. The zero-shot output used the word 'séances' whereas the few-shot model used 'sessions', but they are synonyms.
+The result for GPT-4 is very similar. Since the zero-shot result was already faithful to the source English sentence, we did not see significant quality improvement when adding examples that the model can learn in-context. The zero-shot output used the word 'séances' whereas the few-shot model used 'sessions', but they are synonyms.
 
 
 
@@ -146,11 +146,11 @@ We obtain data for Quechua to Spanish from Ortega et al. [2], which contains cle
 |  Ortega et al. [2] | MT| 22.9|
 | Chen and Fazio [3] | MT | 23.7 |
 
-We find that the LLM's out-of-the-box performance is quite poor, obtaining only 8.9 BLEU (out of 100 total). Using ICL, however, significanlty improves the results to 17.4, almost performing as well as Google Translate (a multilingual MT model). However, neither result outperforms dedicated bilingual MT models [2,3] trained on in-domain data. That being said, the LLM's performance on Quechua-Spanish is already very impressive, and further improvements can likely be obtained with better ICL strategies.
+We find that the LLM's out-of-the-box performance is quite poor, obtaining only 8.9 BLEU (out of 100 total). Using ICL, however, significantly improves the results to 17.4, almost performing as well as Google Translate (a multilingual MT model). However, neither result outperforms dedicated bilingual MT models [2,3] trained on in-domain data. That being said, the LLM's performance on Quechua-Spanish is already very impressive, and further improvements can likely be obtained with better ICL strategies.
 
 ## Conclusion
 
-In conclusion, the authors showed that LLMs can be strong translators, but they only outperform convential translation systems for specific settings/languages. We discussed how in-context learning can be used to enhance the performance of LLMs on translation in a resource-efficient manner, showing different cases where it can be useful. We also talked about how in-context learning can require significant amounts of tuning, finding that different templates can significantly alter performance. Finally, we extended the authors' study on how in-context learning can be used to improve results by translating our down data, performing a case studies with the high resource English-to-French and low-resource Quechua-to-Spanish. Our results indicate that there was little difference in the high-resource pair, since the model's outputs were already very high quality. However, in-context learning led to significant gains for the low-resource pair, increasing the BLEU score from 8.9 to 17.4.
+In conclusion, the authors showed that LLMs can be strong translators, but they only outperform conventional translation systems for specific settings/languages. We discussed how in-context learning can be used to enhance the performance of LLMs on translation in a resource-efficient manner, showing different cases where it can be useful. We also talked about how in-context learning can require significant amounts of tuning, finding that different templates can significantly alter performance. Finally, we extended the authors' study on how in-context learning can be used to improve results by translating our down data, performing case studies with the high resource English-to-French and low-resource Quechua-to-Spanish. Our results indicate that there was little difference in the high-resource pair, since the model's outputs were already very high quality. However, in-context learning led to significant gains for the low-resource pair, increasing the BLEU score from 8.9 to 17.4.
 
 ## References
 
