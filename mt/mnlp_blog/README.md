@@ -96,8 +96,23 @@ The main research question of the paper is to investigate whether LLMs are good 
 
 ## How to use In-Context Learning on your own Data
 
+Thanks to the availability of models like ChatGPT, the experiments of these papers can easily be applied to new datasets. We first do a comparison between ChatGPT and GPT4 via a qualitative evaluation for English to French. Then, we extend the authors' study on the effects of ICL to the new Quechua to Spanish translation pair.
+
+### Quechua to Spanish
+
+We obtain data for Quechua to Spanish from Ortega et al. [2], which contains cleaned parallel sentences taken from the Bible. We use the test set for our evaluation and randomly take 5 sentences from the development set for the ICL examples.
+
+|  Model  | Type | BLEU | 
+| :----------:| :---: | :----: |
+|  ChatGPT | LLM | 8.9 | 
+|  ChatGPT | LLM + ICL| 17.4 |
+|  Google Translate | MT| 19.9 |
+|  Ortega et al. | MT| 22.9|
+| Chen and Fazio | MT | 23.7 |
+
 ## Conclusion
 
 ## References
 
 [1] Briakou, Eleftheria, Colin Cherry, and George Foster. "Searching for Needles in a Haystack: On the Role of Incidental Bilingualism in PaLM's Translation Capability." arXiv preprint arXiv:2305.10266 (2023).
+[2] Ortega, John E., Richard Castro Mamani, and Kyunghyun Cho. "Neural machine translation with a polysynthetic low resource language." Machine Translation 34, no. 4 (2020): 325-346.
