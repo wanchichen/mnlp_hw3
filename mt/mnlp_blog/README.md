@@ -89,8 +89,10 @@ The main research question of the paper is to investigate whether LLMs are good 
 
 5. **Semantically-related exemplars does not brings more benefits than randomly-picked exemplars.** Typically, the performance gains from ICL are directly related to the quality and the relevance of the given examples. The authors tried using semantically similar sentences as the examples for ICL, but found that it actually performed _worse_ than using randomly-picked examples. The authors hypothesize that while these examples may still be useful in helping the model learn the task of translation, the lack of diversity leads to poor translation knowledge.
 
-7. Exemplars teach LLM the core feature of translation task
-8. The exemplar in the tail of the prompt has more impact  on  the  LLM’s  behaviour
+6. **Exemplars teach the LLM the core feature of translation tasks.** LLMs need correct examples to perform ICL. The authors tried using incorrect translation pairs as the examples, but that causes the LLM to completely fail at translating (leading a score of zero!). This indicates that the LLM does not inherently learn the task of translation during its pre-training stage. Duplicate examples also reduce the model's performance, further suggesting the importance of diversity.
+   
+7. **The exemplar in the tail of the prompt has more impact  on  the  LLM’s  behaviour.** The authors experimented with corrupting different examples given to the model, and found that corruptions in later examples had larger impacts on the model's translation quality. This is important for anyone using LLMs to translate, as they will need to consider the order of the translations fed to the model.
+
 
 ## How to use In-Context Learning on your own Data
 
