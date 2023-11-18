@@ -75,24 +75,20 @@ The main research question of the paper is to investigate whether LLMs are good 
 
 ## Factors that Influence an LLM's Translation Performance
 
-1. LLMs can acquire translation ability in a resource-efficient way.
-   
-Thanks to ICL, LLMs can learn to translate completely unseen languages, which allows them to translate new languages without additional training. The below plots compares the performance of the XGLM LLM on different languages with the size of the training data for each language. The higher the red bar, the better the model is at translating. The higher the blue bar, the more training data the model had for that language. The model does not need much data to generate good translations for many languages!
+1. **LLMs can acquire translation ability in a resource-efficient way.** Thanks to ICL, LLMs can learn to translate completely unseen languages, which allows them to translate new languages without additional training. The below plots compares the performance of the XGLM LLM on different languages with the size of the training data for each language. The higher the red bar, the better the model is at translating. The higher the blue bar, the more training data the model had for that language. The model does not need much data to generate good translations for many languages!
 
 <img width="889" alt="image" src="https://github.com/wanchichen/mnlp_hw3/assets/39677488/88b527bc-b112-417d-9152-ff7f4b18e343">
 
-2. Good performance requires a carefully-designed template
-   
-For LLMs to achieve good performance, ICL most be done properly. Using a wrong ICL template can reduce performance by 16% absoulute! What consitutes a good or bad ICL template though? Unfortunately, that can only be known by testing out each template. For example, the authors found that the common template of `[SRC]: <X> \n [TGT]: <Y>` performed extremely poorly.
+2. **Good performance requires a carefully-designed template.** For LLMs to achieve good performance, ICL most be done properly. Using a wrong ICL template can reduce performance by 16% absoulute! What consitutes a good or bad ICL template though? Unfortunately, that can only be known by testing out each template. For example, the authors found that the common template of `[SRC]: <X> \n [TGT]: <Y>` performed extremely poorly.
 
-3. Even an unreasonable template can instruct LLM to generate decent translation
+3. **Even an unreasonable template can instruct LLM to generate decent translation.** Suprisingly, the authors of the paper found that giving the LLM the wrong instructions can still lead to reasonable performance. For example, they tried telling the LLM that `<X> can be summarized as <Y>` instead of `<X> can be translated as <Y>`. Even then, the LLM achieves near identical performance, and even improves on certain language pairs.
 
-Suprisingly, the authors of the paper found that giving the LLM the wrong instructions can still lead to reasonable performance. For example, they tried telling the LLM that `<X> can be summarized as <Y>` instead of `<X> can be translated as <Y>`. Even then, the LLM achieves near identical performance, and even improves on certain language pairs.
+4. **Cross-lingual exemplars help for certain translation directions.** When you have few examples for a specific translation direction, you can also boost performance by using examples from other languages during ICL. The authors found that showing the model Russian to English translations helped boost performance on the low resource Chinese to English. However, this doesn't always work. Performance can actually be degraded if your target translation pair is sufficiently resourced, like German to English translation.
 
-4. Cross-lingual exemplars help for certain translation directions
-5. Semantically-related exemplars does not brings more benefits than randomly-picked exemplars
-6. Exemplars teach LLM the core feature of translation task
-7. The exemplar in the tail of the prompt has more impact  on  the  LLM’s  behaviour
+5. **Semantically-related exemplars does not brings more benefits than randomly-picked exemplars.** Typically, the performance gains from ICL are directly related to the quality and the relevance of the given examples. The authors tried using semantically similar sentences as the examples for ICL, but found that it actually performed _worse_ than using randomly-picked examples. The authors hypothesize that while these examples may still be useful in helping the model learn the task of translation, the lack of diversity leads to poor translation knowledge.
+
+7. Exemplars teach LLM the core feature of translation task
+8. The exemplar in the tail of the prompt has more impact  on  the  LLM’s  behaviour
 
 ## How to use In-Context Learning on your own Data
 
