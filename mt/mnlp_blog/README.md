@@ -98,6 +98,22 @@ The main research question of the paper is to investigate whether LLMs are good 
 
 Thanks to the availability of models like ChatGPT, the experiments of these papers can easily be applied to new datasets. We first do a comparison between ChatGPT and GPT4 via a qualitative evaluation for English to French. Then, we extend the authors' study on the effects of ICL to the new Quechua to Spanish translation pair.
 
+We tried replicating the results that the authors presented by prompting the publicly available large language models. We consider two popular models: Chat-GPT and GPT-4. Note that GPT-4 is the most recent one from OpenAI and it is reported that it performs surprisingly well on the high-resource languages and reasonably well even on low-resource languages. We used French as an example of high-resource language and Quechua low-resource language. We tried both zero-shot and few-shot settings with the following prompt format. 
+```
+Here are some parallel sentences between X and Y:
+
+X1
+Y1
+
+...
+
+X5
+Y6
+
+Now can you help me translate the following sentence?
+X
+```
+
 ### Quechua to Spanish
 
 We obtain data for Quechua to Spanish from Ortega et al. [2], which contains cleaned parallel sentences taken from the Bible. We use the test set for our evaluation and randomly take 5 sentences from the development set for the ICL examples.
